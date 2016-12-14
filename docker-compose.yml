@@ -11,20 +11,22 @@ services:
     depends_on:
       - kibana
     networks:
-      - docker_elk  
+      - docker_elk
+    restart: always   
   elasticsearch:
     container_name: elasticsearch
     build: elasticsearch/
 #    command: elasticsearch -Des.network.host=_non_loopback_ -Des.cluster.name: my-cluster
-    volumes:
-    - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+#    volumes:
+#    - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
       - "9200:9200"
       - "9300:9300"
+    restart: always  
     environment:
-      ES_JAVA_OPTS: "-Xms500m -Xmx500m"
-#    volumes:
-#      - /path/to/storage:/usr/share/elasticsearch/data     
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+    volumes:
+      - /opt/elasticsearch/data:/usr/share/elasticsearch/data     
     networks:
       - docker_elk
   logstash:
@@ -38,6 +40,7 @@ services:
       - "25826:25826/udp"
     networks:
       - docker_elk
+    restart: always 
     depends_on:
       - elasticsearch
     environment:
@@ -54,6 +57,7 @@ services:
       - docker_elk
     depends_on:
       - elasticsearch
+    restart: always  
 networks:
   docker_elk:
     driver: bridge

@@ -78,10 +78,10 @@ packetbeat.protocols.http:
   # Configure the ports where to listen for Redis traffic. You can disable
   # the Redis protocol by commenting out the list of ports.
 #  ports: [6379]
-packetbeat.protocols.thrift:
+#packetbeat.protocols.thrift:
   # Configure the ports where to listen for Thrift-RPC traffic. You can disable
   # the Thrift-RPC protocol by commenting out the list of ports.
-  ports: [9090]
+#  ports: [9090]
 
 #packetbeat.protocols.mongodb:
   # Configure the ports where to listen for MongoDB traffic. You can disable
@@ -126,7 +126,7 @@ packetbeat.protocols.thrift:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["192.168.70.76:5044"]
+  hosts: ["localhost:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

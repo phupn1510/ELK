@@ -15,41 +15,41 @@ filebeat.prospectors:
 # you can use different prospectors for various configurations.
 # Below are the prospector specific configurations.
 
-#- input_type: log
+- input_type: log
 
   # Paths that should be crawled and fetched. Glob based paths.
-#  paths:
-#    - /var/log/syslog
-#    - /var/log/auth.log
-#  document_type: syslog
+  paths:
+    - /var/log/syslog
+    - /var/log/auth.log
+  document_type: syslog
     #- c:\programdata\elasticsearch\logs\*
-- input_type: log
-  paths:
-    - /var/log/nginx/axonivy.access.log
-    - /var/log/nginx/klara-dev.axonivy.io.log
-  exclude_files: [".gz$"]
-  document_type: nginx-access
-  scan_frequency: 1s
-  harvester_buffer_size: 16384
-  max_bytes: 10485760
-  max_backoff: 2s
-  backoff_factor: 2
-  spool_size: 2048
-  idle_timeout: 1s
-  registry_file: /var/lib/filebeat/registry
-- input_type: log
-  paths:
-    - /var/log/nginx/axonivy.error.log
-  exclude_files: [".gz$"]
-  document_type: nginx-error
-  scan_frequency: 10s
-  harvester_buffer_size: 16384
-  max_bytes: 10485760
-  max_backoff: 10s
-  backoff_factor: 2
-  spool_size: 2048
-  idle_timeout: 5s
-  registry_file: /var/lib/filebeat/registry
+#- input_type: log
+#  paths:
+#    - /var/log/nginx/axonivy.access.log
+#    - /var/log/nginx/klara-dev.axonivy.io.log
+#  exclude_files: [".gz$"]
+#  document_type: nginx-access
+#  scan_frequency: 1s
+#  harvester_buffer_size: 16384
+#  max_bytes: 10485760
+#  max_backoff: 2s
+#  backoff_factor: 2
+#  spool_size: 2048
+#  idle_timeout: 1s
+#  registry_file: /var/lib/filebeat/registry
+#- input_type: log
+#  paths:
+#    - /var/log/nginx/axonivy.error.log
+#  exclude_files: [".gz$"]
+#  document_type: nginx-error
+#  scan_frequency: 10s
+#  harvester_buffer_size: 16384
+#  max_bytes: 10485760
+#  max_backoff: 10s
+#  backoff_factor: 2
+#  spool_size: 2048
+#  idle_timeout: 5s
+#  registry_file: /var/lib/filebeat/registry
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
   # matching any regular expression from the list.
   #exclude_lines: ["^DBG"]
@@ -117,7 +117,7 @@ filebeat.prospectors:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["192.168.70.76:5044"]
+  hosts: ["localhost:5044"]
 #  bulk_max_size: 0
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
