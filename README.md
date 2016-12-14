@@ -12,17 +12,16 @@ Please install as following instructions:
  chmod +x pre_install.sh
  ./pre_install.sh
 ```
-Note: you can change network interface you want to bind address by editing pre_install script. Example eth0
+This script to get IP address of host and create storage of ES data
 ```
  docker-compose up -d
 ``` 
- for background running
+ for background running all ELK components docker
 ``` 
  docker-compose up
  ```
- for interactive running
+ for interactive running all ELK components docker (Ctrl+C will stop all containers) to easily get logs
  
- Note: if you want install plugin for logstash please using ADD in Dockerfile located in logstash folder
  
  ```
  chomod +x input_template.sh
@@ -30,5 +29,9 @@ Note: you can change network interface you want to bind address by editing pre_i
  ```
  This script to create a template of ES index
  
+ 
+ Note: you can change network interface you want to bind address by editing pre_install script. Example eth0
+ Note: if you want install plugin for logstash please using ADD in Dockerfile located in logstash folder
+ Note: /opt/elasticsearch/data will be storage of Elasticsearch Container
  Install agents please go to agents folder 
  
