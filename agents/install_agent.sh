@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-$IP_ELK=10.10.10.10 
+$IP_ELK='10.10.10.10' 
 
 /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-amd64.deb
 /usr/bin/dpkg -i filebeat-5.0.2-amd64.deb
@@ -14,9 +14,9 @@ $IP_ELK=10.10.10.10
  /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.0.2-amd64.deb
  /usr/bin/dpkg -i packetbeat-5.0.2-amd64.deb
 
- /bin/sed -i 's/localhost/$$IP_ELK/g' filebeat.yml
- /bin/sed -i 's/localhost/$$IP_ELK/g' metricbeat.yml
- /bin/sed -i 's/localhost/$$IP_ELK/g' packetbeat.yml
+ /bin/sed -i 's/localhost/'$IP_ELK'/g' filebeat.yml
+ /bin/sed -i 's/localhost/'$IP_ELK'/g' metricbeat.yml
+ /bin/sed -i 's/localhost/'$IP_ELK'/g' packetbeat.yml
  cp filebeat.yml /etc/filebeat/filebeat.yml
  cp metricbeat.yml /etc/metricbeat.yml
  cp packetbeat.yml /etc/packetbeat.yml
