@@ -1,0 +1,84 @@
+{
+    "order": 0,
+    "template": "filebeat-*",
+    "settings": {
+      "index": {
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "_meta": {
+          "version": "5.0.0"
+        },
+        "dynamic_templates": [
+          {
+            "strings_as_keyword": {
+              "mapping": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "match_mapping_type": "string"
+            }
+          }
+        ],
+        "_all": {
+          "norms": false
+        },
+        "properties": {
+          "@timestamp": {
+            "type": "date"
+          },
+          "geoip": {
+            "dynamic": true,
+            "type": "object",
+            "properties": {
+              "location": {
+                "type": "geo_point"
+              }
+            }
+          },
+          "offset": {
+            "type": "long"
+          },
+          "beat": {
+            "properties": {
+              "hostname": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "name": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "version": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              }
+            }
+          },
+          "input_type": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "source": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "message": {
+            "norms": false,
+            "type": "text"
+          },
+          "type": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "tags": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }

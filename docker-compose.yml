@@ -21,7 +21,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xms2g -Xmx2g"
+      ES_JAVA_OPTS: "-Xms500m -Xmx500m"
 #   volumes:
 #     - /path/to/storage:/usr/share/elasticsearch/data     
     networks:
@@ -40,7 +40,7 @@ services:
     depends_on:
       - elasticsearch
     environment:
-      - LS_HEAP_SIZE=2048m 
+      - LS_HEAP_SIZE=1024m
       - LS_JAVA_OPTS=-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=18080 -Dcom.sun.management.jmxremote.rmi.port=18080 -Djava.rmi.server.hostname=DOCKER_HOST_IP -Dcom.sun.management.jmxremote.local.only=false
   kibana:
     build: kibana/
@@ -53,8 +53,6 @@ services:
       - docker_elk
     depends_on:
       - elasticsearch
-  curl:   
-
 networks:
   docker_elk:
     driver: bridge

@@ -1,0 +1,119 @@
+{
+    "order": 0,
+    "template": "collectd-*",
+    "settings": {
+      "index": {
+        "refresh_interval": "10s"
+      }
+    },
+    "mappings": {
+      "collectd": {
+        "properties": {
+          "longterm": {
+            "type": "float"
+          },
+          "geoip": {
+            "type": "object"
+          },
+          "plugin_instance": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "read": {
+            "type": "long"
+          },
+          "type_instance": {
+            "fielddata": true,
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "tx": {
+            "type": "long"
+          },
+          "shortterm": {
+            "type": "float"
+          },
+          "rx": {
+            "type": "long"
+          },
+          "type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "tags": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "@timestamp": {
+            "type": "date"
+          },
+          "plugin": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "@version": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "host": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "collectd_type": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "ignore_above": 256,
+                "type": "keyword"
+              }
+            }
+          },
+          "value": {
+            "type": "long"
+          },
+          "write": {
+            "type": "long"
+          },
+          "midterm": {
+            "type": "float"
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }

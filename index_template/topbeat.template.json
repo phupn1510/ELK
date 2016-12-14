@@ -1,0 +1,124 @@
+
+{
+"order": 0,
+    "template": "topbeat-*",
+    "settings": {
+      "index": {
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "dynamic_templates": [
+          {
+            "template1": {
+              "mapping": {
+                "ignore_above": 1024,
+                "index": "not_analyzed",
+                "type": "{dynamic_type}",
+                "doc_values": true
+              },
+              "match": "*"
+            }
+          }
+        ],
+        "_all": {
+          "norms": {
+            "enabled": false
+          },
+          "enabled": true
+        },
+        "properties": {
+          "proc": {
+            "properties": {
+              "mem": {
+                "properties": {
+                  "rss_p": {
+                    "type": "float",
+                    "doc_values": "true"
+                  }
+                }
+              },
+              "name": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "ignore_above": 256,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "cpu": {
+                "properties": {
+                  "user_p": {
+                    "type": "float",
+                    "doc_values": "true"
+                  }
+                }
+              }
+            }
+          },
+          "@timestamp": {
+            "type": "date"
+          },
+          "load": {
+            "properties": {
+              "load5": {
+                "type": "float",
+                "doc_values": "true"
+              },
+              "load1": {
+                "type": "float",
+                "doc_values": "true"
+              },
+              "load15": {
+                "type": "float",
+                "doc_values": "true"
+              }
+            }
+          },
+          "mem": {
+            "properties": {
+              "used_p": {
+                "type": "float",
+                "doc_values": "true"
+              },
+              "actual_used_p": {
+                "type": "float",
+                "doc_values": "true"
+              }
+            }
+          },
+          "swap": {
+            "properties": {
+              "used_p": {
+                "type": "float",
+                "doc_values": "true"
+              }
+            }
+          },
+          "cpu": {
+            "properties": {
+              "user_p": {
+                "type": "float",
+                "doc_values": "true"
+              },
+              "system_p": {
+                "type": "float",
+                "doc_values": "true"
+              }
+            }
+          },
+          "fs": {
+            "properties": {
+              "used_p": {
+                "type": "float",
+                "doc_values": "true"
+              }
+            }
+          }
+        }
+      }
+    },
+    "aliases": {}
+  }

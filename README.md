@@ -36,7 +36,9 @@ You can also choose to run it in background (detached mode):
 ```bash
 $ docker-compose up -d
 ```
-
+`````` Upload template
+$ chmod +x input_template.sh
+$ ./input_template.sh
 Now that the stack is running, you'll want to inject logs in it. The shipped logstash configuration allows you to send content via tcp:
 
 ```bash
@@ -50,7 +52,8 @@ And then access Kibana UI by hitting [http://localhost:5601](http://localhost:56
 See: https://www.elastic.co/guide/en/kibana/current/setup.html#connect
 
 By default, the stack exposes the following ports:
-* 5000: Logstash TCP input.
+* 5044: Logstash TCP input.
+* 25826/udp: Logstash collectd input
 * 9200: Elasticsearch HTTP
 * 9300: Elasticsearch TCP transport
 * 5601: Kibana
