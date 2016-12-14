@@ -60,7 +60,7 @@ $ docker-compose up -d
 Now that the stack is running, you'll want to inject logs in it. The shipped logstash configuration allows you to send content via tcp:
 
 ```bash
-$ nc localhost 5000 < /path/to/logfile.log
+$ nc localhost 5044 < /path/to/logfile.log
 ```
 
 And then access Kibana UI by hitting [http://localhost:5601](http://localhost:5601) with a web browser.

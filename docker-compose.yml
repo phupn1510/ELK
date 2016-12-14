@@ -1,28 +1,42 @@
 version: '2'
 
 services:
+   nginx:
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default:/etc/nginx/sites-enabled/default
+    depends_on:
+      - kibana
   elasticsearch:
+    container_name: elasticsearch
     build: elasticsearch/
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+#   volumes:
+#     - /path/to/storage:/usr/share/elasticsearch/data     
     networks:
       - docker_elk
   logstash:
     build: logstash/
+    container_name: logstash
     command: -f /etc/logstash/conf.d/
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
     ports:
-      - "5000:5000"
+      - "5044:5044"
+      - "25826:25826/udp"
     networks:
       - docker_elk
     depends_on:
       - elasticsearch
   kibana:
     build: kibana/
+    container_name: kibana
     volumes:
       - ./kibana/config/:/etc/kibana/
     ports:
