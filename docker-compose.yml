@@ -35,6 +35,7 @@ services:
     command: -f /etc/logstash/conf.d/
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
+      - ./logstash/tmp:/tmp
     ports:
       - "5044:5044"
       - "25826:25826/udp"

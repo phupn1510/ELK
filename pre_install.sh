@@ -1,6 +1,7 @@
 #!/bin/bash
 mkdir -p /opt/elasticsearch/data
-chown 766 -R /opt/elasticsearch/data
+chmod 766 -R /opt/elasticsearch/data
+chmod 766 -R logstash/tmp
 net=$(ifconfig eth0 | awk '/inet addr/{print substr($2,6)}')
 #sed -i 's/original/new/g' file.txt
 
