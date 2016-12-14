@@ -4,6 +4,9 @@ DOCKER_ELK by PHU PHAN NHAT
 
 Requirements:
       - Please install Docker and docker-compose 
+	  
+	  
+	  
 Please install as following instructions:
 ```
  chmod +x pre_install.sh
@@ -25,6 +28,7 @@ Note: you can change network interface you want to bind address by editing pre_i
  chomod +x input_template.sh
  ./input_template.sh
  ```
+ This script to create a template of ES index
  
  Install agents please go to agents folder 
  
