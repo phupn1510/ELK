@@ -1,8 +1,8 @@
 version: '2'
-
 services:
-   nginx:
+  nginx:
     container_name: nginx
+    image: nginx
     ports:
       - "80:80"
     volumes:
@@ -22,8 +22,8 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xms500m -Xmx500m"
-#   volumes:
-#     - /path/to/storage:/usr/share/elasticsearch/data     
+#    volumes:
+#      - /path/to/storage:/usr/share/elasticsearch/data     
     networks:
       - docker_elk
   logstash:
