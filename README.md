@@ -21,7 +21,7 @@ F#or example on Redhat and CentOS, the following will apply the proper context:
 ```bash
 .-root@centos ~
 -$ chcon -R system_u:object_r:admin_home_t:s0 docker-elk/
-
+`````
 
 ```bash
 ####Please change output logstash and kibana to physical network interface
