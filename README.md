@@ -1,29 +1,9 @@
-# Docker ELK stack
-
-[![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Run the latest version of the ELK (Elasticseach, Logstash, Kibana) stack with Docker and Docker-compose.
-
-It will give you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticseach and the visualization power of Kibana.
-
+# Docker ELK stack by PHUPN
 Based on the official images:
 
 * [elasticsearch](https://registry.hub.docker.com/_/elasticsearch/)
 * [logstash](https://registry.hub.docker.com/_/logstash/)
 * [kibana](https://registry.hub.docker.com/_/kibana/)
-
-**Note**: Other branches in this project are available:
-
-* ELK 5 with X-Pack support: https://github.com/deviantony/docker-elk/tree/x-pack
-* ELK 5 in Vagrant: https://github.com/deviantony/docker-elk/tree/vagrant
-
-# Requirements
-
-## Setup
-
-1. Install [Docker](http://docker.io).
-2. Install [Docker-compose](http://docs.docker.com/compose/install/) **version >= 1.6**.
-3. Clone this repository
 
 ## Increase max_map_count on your host (Linux)
 
@@ -35,8 +15,8 @@ $ sudo sysctl -w vm.max_map_count=262144
 
 ## SELinux
 
-On distributions which have SELinux enabled out-of-the-box you will need to either re-context the files or set SELinux into Permissive mode in order for docker-elk to start properly.
-For example on Redhat and CentOS, the following will apply the proper context:
+#On distributions which have SELinux enabled out-of-the-box you will need to either re-context the files or set SELinux into Permissive mode in order for docker-elk to start properly.
+F#or example on Redhat and CentOS, the following will apply the proper context:
 
 ```bash
 .-root@centos ~
@@ -206,3 +186,12 @@ elasticsearch:
 ```
 
 This will store elasticsearch data inside `/path/to/storage`.
+## SELinux
+
+#On distributions which have SELinux enabled out-of-the-box you will need to either re-context the files or set SELinux into Permissive mode in order for docker-elk to start properly.
+F#or example on Redhat and CentOS, the following will apply the proper context:
+
+```bash
+.-root@centos ~
+-$ chcon -R system_u:object_r:admin_home_t:s0 docker-elk/
+```
