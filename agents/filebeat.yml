@@ -22,6 +22,8 @@ filebeat.prospectors:
     - /var/log/syslog
     - /var/log/auth.log
   document_type: syslog
+#  fields:
+ #   type_beats: filebeat
     #- c:\programdata\elasticsearch\logs\*
 #- input_type: log
 #  paths:
@@ -115,15 +117,15 @@ filebeat.prospectors:
   #password: "changeme"
 
 #----------------------------- Logstash output --------------------------------
-#output.logstash:
+output.logstash:
   # The Logstash hosts
-#  hosts: ["localhost:5044"]
+  hosts: ["localhost:5044"]
 
-output.redis:
-  hosts: ["localhost"]
-  key: "filebeat"
-  db: 0
-  timeout: 5
+#output.redis:
+ # hosts: ["localhost"]
+#  key: "filebeat"
+#  db: 0
+#  timeout: 5
 #  bulk_max_size: 0
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
