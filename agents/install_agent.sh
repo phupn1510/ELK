@@ -18,8 +18,8 @@ IP_ELK=10.10.10.10
  /bin/sed -i 's/localhost/'$IP_ELK'/g' metricbeat.yml
  /bin/sed -i 's/localhost/'$IP_ELK'/g' packetbeat.yml
  cp filebeat.yml /etc/filebeat/filebeat.yml
- cp metricbeat.yml /etc/metricbeat.yml
- cp packetbeat.yml /etc/packetbeat.yml
+ cp metricbeat.yml /etc/metricbeat/metricbeat.yml
+ cp packetbeat.yml /etc/packetbeat/packetbeat.yml
  /etc/init.d/filebeat restart
  /etc/init.d/metricbeat restart
  /etc/init.d/packetbeat restart
