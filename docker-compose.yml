@@ -42,6 +42,8 @@ services:
       - "25826:25826/udp"
     networks:
       - docker_elk
+    links:
+      - redis 
     restart: always 
     depends_on:
       - elasticsearch
@@ -59,7 +61,19 @@ services:
       - docker_elk
     depends_on:
       - elasticsearch
-    restart: always  
+    restart: always
+   redis:
+    container_name: redis
+    image: redis:3.2.6-alpine
+    depends_on:
+      - logstash
+    links:
+      - logstash
+    ports:
+      - "6379:6379" 
+    restart: always
+    networks:
+      - docker_elk     
 networks:
   docker_elk:
     driver: bridge

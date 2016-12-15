@@ -115,9 +115,15 @@ filebeat.prospectors:
   #password: "changeme"
 
 #----------------------------- Logstash output --------------------------------
-output.logstash:
+#output.logstash:
   # The Logstash hosts
-  hosts: ["localhost:5044"]
+#  hosts: ["localhost:5044"]
+
+output.redis:
+  hosts: ["localhost"]
+  key: "logstash"
+  db: 0
+  timeout: 5
 #  bulk_max_size: 0
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
@@ -128,6 +134,7 @@ output.logstash:
 
   # Client Certificate Key
   #ssl.key: "/etc/pki/client/cert.key"
+  
 #================================ Logging =====================================
 
 # Sets log level. The default log level is info.
