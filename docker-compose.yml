@@ -65,10 +65,8 @@ services:
   redis:
     container_name: redis
     image: redis:3.2.6-alpine
-    depends_on:
-      - logstash
-    links:
-      - logstash
+#    depends_on:
+#      - logstash
     ports:
       - "6379:6379" 
     restart: always
