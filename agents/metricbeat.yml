@@ -81,7 +81,7 @@ metricbeat.modules:
 #  hosts: ["localhost:5044"]
 output.redis:
   hosts: ["localhost"]
-  key: "logstash"
+  key: "metricbeat"
   db: 0
   timeout: 5
 

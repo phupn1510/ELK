@@ -129,7 +129,7 @@ packetbeat.protocols.http:
 #  hosts: ["localhost:5044"]
 output.redis:
   hosts: ["localhost"]
-  key: "logstash"
+  key: "packetbeat"
   db: 0
   timeout: 5
   # Optional SSL. By default is off.

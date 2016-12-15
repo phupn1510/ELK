@@ -121,7 +121,7 @@ filebeat.prospectors:
 
 output.redis:
   hosts: ["localhost"]
-  key: "logstash"
+  key: "filebeat"
   db: 0
   timeout: 5
 #  bulk_max_size: 0
