@@ -42,8 +42,8 @@ services:
       - "25826:25826/udp"
     networks:
       - docker_elk
-    links:
-      - redis 
+#    links:
+#      - redis 
     restart: always 
     depends_on:
       - elasticsearch
