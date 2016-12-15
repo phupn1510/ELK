@@ -62,7 +62,7 @@ services:
     depends_on:
       - elasticsearch
     restart: always
-   redis:
+  redis:
     container_name: redis
     image: redis:3.2.6-alpine
     depends_on:
