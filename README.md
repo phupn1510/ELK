@@ -39,7 +39,7 @@ This script to get IP address of host and create storage of ES data
  
  Note: /opt/elasticsearch/data will be storage of Elasticsearch Container
  
- *********** Note: nginx user: admin/aavn123!@# *************
+ *********** Note: nginx user: admin/aavn123!@# ************* (you can add httpasswd at nginx.conf)
  
  
  *******Install agents please go to agents folder********* 

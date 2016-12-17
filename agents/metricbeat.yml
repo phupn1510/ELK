@@ -20,10 +20,10 @@ metricbeat.modules:
     - load
 
     # Per CPU core stats
-    #- core
+    - core
 
     # IO stats
-    #- diskio
+    - diskio
 
     # Per filesystem stats
     - filesystem
