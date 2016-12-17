@@ -4,8 +4,11 @@ DOCKER_ELK by PHU PHAN NHAT
 
 Requirements:
       - Please install Docker and docker-compose 
-	  
-	  
+
+```
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
+https://docs.docker.com/compose/install/
+```	  
 	  
 Please install as following instructions:
 ```

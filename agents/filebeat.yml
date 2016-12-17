@@ -21,6 +21,7 @@ filebeat.prospectors:
   paths:
     - /var/log/syslog
     - /var/log/auth.log
+    - /var/log/nginx/access.log
   document_type: syslog
 #  fields:
  #   type_beats: filebeat
