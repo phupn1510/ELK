@@ -1,2661 +1,2667 @@
 {
-  "mappings": {
-    "_default_": {
-      "_all": {
-        "norms": false
-      },
-      "_meta": {
-        "version": "5.0.2"
-      },
-      "dynamic_templates": [
-        {
-          "strings_as_keyword": {
-            "mapping": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "match_mapping_type": "string"
-          }
-        }
-      ],
-      "properties": {
-        "@timestamp": {
-          "type": "date"
+    "order": 0,
+    "template": "metricbeat-*",
+    "settings": {
+      "index": {
+        "refresh_interval": "5s"
+      }
+    },
+    "mappings": {
+      "_default_": {
+        "_meta": {
+          "version": "5.0.2"
         },
-        "apache": {
-          "properties": {
-            "status": {
-              "properties": {
-                "bytes_per_request": {
-                  "scaling_factor": 1000,
-                  "type": "scaled_float"
-                },
-                "bytes_per_sec": {
-                  "scaling_factor": 1000,
-                  "type": "scaled_float"
-                },
-                "connections": {
-                  "properties": {
-                    "async": {
-                      "properties": {
-                        "closing": {
-                          "type": "long"
-                        },
-                        "keep_alive": {
-                          "type": "long"
-                        },
-                        "writing": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "total": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "cpu": {
-                  "properties": {
-                    "children_system": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "children_user": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "load": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "system": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "user": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    }
-                  }
-                },
-                "hostname": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "load": {
-                  "properties": {
-                    "1": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    },
-                    "15": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    },
-                    "5": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    }
-                  }
-                },
-                "requests_per_sec": {
-                  "scaling_factor": 1000,
-                  "type": "scaled_float"
-                },
-                "scoreboard": {
-                  "properties": {
-                    "closing_connection": {
-                      "type": "long"
-                    },
-                    "dns_lookup": {
-                      "type": "long"
-                    },
-                    "gracefully_finishing": {
-                      "type": "long"
-                    },
-                    "idle_cleanup": {
-                      "type": "long"
-                    },
-                    "keepalive": {
-                      "type": "long"
-                    },
-                    "logging": {
-                      "type": "long"
-                    },
-                    "open_slot": {
-                      "type": "long"
-                    },
-                    "reading_request": {
-                      "type": "long"
-                    },
-                    "sending_reply": {
-                      "type": "long"
-                    },
-                    "starting_up": {
-                      "type": "long"
-                    },
-                    "total": {
-                      "type": "long"
-                    },
-                    "waiting_for_connection": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "total_accesses": {
-                  "type": "long"
-                },
-                "total_kbytes": {
-                  "type": "long"
-                },
-                "uptime": {
-                  "properties": {
-                    "server_uptime": {
-                      "type": "long"
-                    },
-                    "uptime": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "workers": {
-                  "properties": {
-                    "busy": {
-                      "type": "long"
-                    },
-                    "idle": {
-                      "type": "long"
-                    }
+        "dynamic_templates": [
+          {
+            "strings_as_keyword": {
+              "mapping": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "match_mapping_type": "string"
+            }
+          }
+        ],
+        "_all": {
+          "norms": false
+        },
+        "properties": {
+          "nginx": {
+            "properties": {
+              "stubstatus": {
+                "properties": {
+                  "current": {
+                    "type": "long"
+                  },
+                  "hostname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "waiting": {
+                    "type": "long"
+                  },
+                  "accepts": {
+                    "type": "long"
+                  },
+                  "handled": {
+                    "type": "long"
+                  },
+                  "writing": {
+                    "type": "long"
+                  },
+                  "dropped": {
+                    "type": "long"
+                  },
+                  "active": {
+                    "type": "long"
+                  },
+                  "reading": {
+                    "type": "long"
+                  },
+                  "requests": {
+                    "type": "long"
                   }
                 }
               }
             }
-          }
-        },
-        "beat": {
-          "properties": {
-            "hostname": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "name": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "version": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            }
-          }
-        },
-        "haproxy": {
-          "properties": {
-            "info": {
-              "properties": {
-                "compress": {
-                  "properties": {
-                    "bps": {
-                      "properties": {
-                        "in": {
-                          "type": "long"
-                        },
-                        "out": {
-                          "type": "long"
-                        },
-                        "rate_limit": {
-                          "type": "long"
-                        }
+          },
+          "zookeeper": {
+            "properties": {
+              "mntr": {
+                "properties": {
+                  "ephemerals_count": {
+                    "type": "long"
+                  },
+                  "max_file_descriptor_count": {
+                    "type": "long"
+                  },
+                  "num_alive_connections": {
+                    "type": "long"
+                  },
+                  "approximate_data_size": {
+                    "type": "long"
+                  },
+                  "outstanding_requests": {
+                    "type": "long"
+                  },
+                  "latency": {
+                    "properties": {
+                      "avg": {
+                        "type": "long"
+                      },
+                      "min": {
+                        "type": "long"
+                      },
+                      "max": {
+                        "type": "long"
                       }
                     }
-                  }
-                },
-                "conn": {
-                  "properties": {
-                    "rate": {
-                      "properties": {
-                        "limit": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
+                  },
+                  "open_file_descriptor_count": {
+                    "type": "long"
+                  },
+                  "znode_count": {
+                    "type": "long"
+                  },
+                  "pending_syncs": {
+                    "type": "long"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "packets": {
+                    "properties": {
+                      "received": {
+                        "type": "long"
+                      },
+                      "sent": {
+                        "type": "long"
                       }
                     }
-                  }
-                },
-                "cum": {
-                  "properties": {
-                    "conns": {
-                      "type": "long"
-                    },
-                    "req": {
-                      "type": "long"
-                    },
-                    "ssl_conns": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "curr": {
-                  "properties": {
-                    "conns": {
-                      "type": "long"
-                    },
-                    "ssl_conns": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "idle_pct": {
-                  "scaling_factor": 1000,
-                  "type": "scaled_float"
-                },
-                "max": {
-                  "properties": {
-                    "conn": {
-                      "properties": {
-                        "rate": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "hard_conn": {
-                      "type": "long"
-                    },
-                    "pipes": {
-                      "type": "long"
-                    },
-                    "sess_rate": {
-                      "type": "long"
-                    },
-                    "sock": {
-                      "type": "long"
-                    },
-                    "ssl": {
-                      "properties": {
-                        "conns": {
-                          "type": "long"
-                        },
-                        "rate": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "zlib_mem_usage": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "mem_max_bytes": {
-                  "type": "long"
-                },
-                "nb_proc": {
-                  "type": "long"
-                },
-                "pid": {
-                  "type": "long"
-                },
-                "pipes": {
-                  "properties": {
-                    "free": {
-                      "type": "long"
-                    },
-                    "used": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "process_num": {
-                  "type": "long"
-                },
-                "run_queue": {
-                  "type": "long"
-                },
-                "sess": {
-                  "properties": {
-                    "rate": {
-                      "properties": {
-                        "limit": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "ssl": {
-                  "properties": {
-                    "backend": {
-                      "properties": {
-                        "key_rate": {
-                          "type": "long"
-                        },
-                        "max_key_rate": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "cache_misses": {
-                      "type": "long"
-                    },
-                    "cached_lookups": {
-                      "type": "long"
-                    },
-                    "frontend": {
-                      "properties": {
-                        "key_rate": {
-                          "type": "long"
-                        },
-                        "max_key_rate": {
-                          "type": "long"
-                        },
-                        "session_reuse_pct": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "rate": {
-                      "properties": {
-                        "limit": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "tasks": {
-                  "type": "long"
-                },
-                "ulimit_n": {
-                  "type": "long"
-                },
-                "uptime_sec": {
-                  "type": "long"
-                },
-                "zlib_mem_usage": {
-                  "type": "long"
-                }
-              }
-            },
-            "stat": {
-              "properties": {
-                "act": {
-                  "type": "long"
-                },
-                "bck": {
-                  "type": "long"
-                },
-                "bin": {
-                  "type": "long"
-                },
-                "bout": {
-                  "type": "long"
-                },
-                "check": {
-                  "properties": {
-                    "code": {
-                      "type": "long"
-                    },
-                    "duration": {
-                      "type": "long"
-                    },
-                    "status": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    }
-                  }
-                },
-                "chkdown": {
-                  "type": "long"
-                },
-                "chkfail": {
-                  "type": "long"
-                },
-                "cli_abrt": {
-                  "type": "long"
-                },
-                "comp": {
-                  "properties": {
-                    "byp": {
-                      "type": "long"
-                    },
-                    "in": {
-                      "type": "long"
-                    },
-                    "out": {
-                      "type": "long"
-                    },
-                    "rsp": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "component_type": {
-                  "type": "long"
-                },
-                "ctime": {
-                  "type": "long"
-                },
-                "downtime": {
-                  "type": "long"
-                },
-                "dreq": {
-                  "type": "long"
-                },
-                "dresp": {
-                  "type": "long"
-                },
-                "econ": {
-                  "type": "long"
-                },
-                "ereq": {
-                  "type": "long"
-                },
-                "eresp": {
-                  "type": "long"
-                },
-                "hanafail": {
-                  "type": "long"
-                },
-                "hrsp": {
-                  "properties": {
-                    "1xx": {
-                      "type": "long"
-                    },
-                    "2xx": {
-                      "type": "long"
-                    },
-                    "3xx": {
-                      "type": "long"
-                    },
-                    "4xx": {
-                      "type": "long"
-                    },
-                    "5xx": {
-                      "type": "long"
-                    },
-                    "other": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "iid": {
-                  "type": "long"
-                },
-                "last": {
-                  "properties": {
-                    "agt": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "chk": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "sess": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "lastchg": {
-                  "type": "long"
-                },
-                "lbtot": {
-                  "type": "long"
-                },
-                "pid": {
-                  "type": "long"
-                },
-                "pxname": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "qcur": {
-                  "type": "long"
-                },
-                "qlimit": {
-                  "type": "long"
-                },
-                "qmax": {
-                  "type": "long"
-                },
-                "qtime": {
-                  "type": "long"
-                },
-                "rate": {
-                  "properties": {
-                    "lim": {
-                      "type": "long"
-                    },
-                    "max": {
-                      "type": "long"
-                    },
-                    "value": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "req": {
-                  "properties": {
-                    "rate": {
-                      "properties": {
-                        "max": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "tot": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "rtime": {
-                  "type": "long"
-                },
-                "scur": {
-                  "type": "long"
-                },
-                "sid": {
-                  "type": "long"
-                },
-                "slim": {
-                  "type": "long"
-                },
-                "smax": {
-                  "type": "long"
-                },
-                "srv_abrt": {
-                  "type": "long"
-                },
-                "status": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "stot": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "svname": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "throttle": {
-                  "type": "long"
-                },
-                "tracked": {
-                  "type": "long"
-                },
-                "ttime": {
-                  "type": "long"
-                },
-                "weight": {
-                  "type": "long"
-                },
-                "wredis": {
-                  "type": "long"
-                },
-                "wretr": {
-                  "type": "long"
-                }
-              }
-            }
-          }
-        },
-        "metricset": {
-          "properties": {
-            "host": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "module": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "name": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "rtt": {
-              "type": "long"
-            }
-          }
-        },
-        "mongodb": {
-          "properties": {
-            "status": {
-              "properties": {
-                "asserts": {
-                  "properties": {
-                    "msg": {
-                      "type": "long"
-                    },
-                    "regular": {
-                      "type": "long"
-                    },
-                    "rollovers": {
-                      "type": "long"
-                    },
-                    "user": {
-                      "type": "long"
-                    },
-                    "warning": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "background_flushing": {
-                  "properties": {
-                    "average": {
-                      "properties": {
-                        "ms": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "flushes": {
-                      "type": "long"
-                    },
-                    "last": {
-                      "properties": {
-                        "ms": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "last_finished": {
-                      "type": "date"
-                    },
-                    "total": {
-                      "properties": {
-                        "ms": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "connections": {
-                  "properties": {
-                    "available": {
-                      "type": "long"
-                    },
-                    "current": {
-                      "type": "long"
-                    },
-                    "total_created": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "extra_info": {
-                  "properties": {
-                    "heap_usage": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "page_faults": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "journaling": {
-                  "properties": {
-                    "commits": {
-                      "type": "long"
-                    },
-                    "commits_in_write_lock": {
-                      "type": "long"
-                    },
-                    "compression": {
-                      "type": "long"
-                    },
-                    "early_commits": {
-                      "type": "long"
-                    },
-                    "journaled": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "times": {
-                      "properties": {
-                        "commits": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "commits_in_write_lock": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "dt": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "prep_log_buffer": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "remap_private_view": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "write_to_data_files": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "write_to_journal": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "write_to_data_files": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "local_time": {
-                  "type": "date"
-                },
-                "memory": {
-                  "properties": {
-                    "bits": {
-                      "type": "long"
-                    },
-                    "mapped": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "mapped_with_journal": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "resident": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "virtual": {
-                      "properties": {
-                        "mb": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "network": {
-                  "properties": {
-                    "in": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "out": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "requests": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "opcounters": {
-                  "properties": {
-                    "command": {
-                      "type": "long"
-                    },
-                    "delete": {
-                      "type": "long"
-                    },
-                    "getmore": {
-                      "type": "long"
-                    },
-                    "insert": {
-                      "type": "long"
-                    },
-                    "query": {
-                      "type": "long"
-                    },
-                    "update": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "opcounters_replicated": {
-                  "properties": {
-                    "command": {
-                      "type": "long"
-                    },
-                    "delete": {
-                      "type": "long"
-                    },
-                    "getmore": {
-                      "type": "long"
-                    },
-                    "insert": {
-                      "type": "long"
-                    },
-                    "query": {
-                      "type": "long"
-                    },
-                    "update": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "storage_engine": {
-                  "properties": {
-                    "name": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    }
-                  }
-                },
-                "uptime": {
-                  "properties": {
-                    "ms": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "version": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "write_backs_queued": {
-                  "type": "boolean"
-                }
-              }
-            }
-          }
-        },
-        "mysql": {
-          "properties": {
-            "status": {
-              "properties": {
-                "aborted": {
-                  "properties": {
-                    "clients": {
-                      "type": "long"
-                    },
-                    "connects": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "binlog": {
-                  "properties": {
-                    "cache": {
-                      "properties": {
-                        "disk_use": {
-                          "type": "long"
-                        },
-                        "use": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "bytes": {
-                  "properties": {
-                    "received": {
-                      "type": "long"
-                    },
-                    "sent": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "connections": {
-                  "type": "long"
-                },
-                "created": {
-                  "properties": {
-                    "tmp": {
-                      "properties": {
-                        "disk_tables": {
-                          "type": "long"
-                        },
-                        "files": {
-                          "type": "long"
-                        },
-                        "tables": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "delayed": {
-                  "properties": {
-                    "errors": {
-                      "type": "long"
-                    },
-                    "insert_threads": {
-                      "type": "long"
-                    },
-                    "writes": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "flush_commands": {
-                  "type": "long"
-                },
-                "max_used_connections": {
-                  "type": "long"
-                },
-                "open": {
-                  "properties": {
-                    "files": {
-                      "type": "long"
-                    },
-                    "streams": {
-                      "type": "long"
-                    },
-                    "tables": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "opened_tables": {
-                  "type": "long"
-                },
-                "threads": {
-                  "properties": {
-                    "cached": {
-                      "type": "long"
-                    },
-                    "connected": {
-                      "type": "long"
-                    },
-                    "created": {
-                      "type": "long"
-                    },
-                    "running": {
-                      "type": "long"
-                    }
+                  },
+                  "hostname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "followers": {
+                    "type": "long"
+                  },
+                  "synced_followers": {
+                    "type": "long"
+                  },
+                  "watch_count": {
+                    "type": "long"
+                  },
+                  "server_state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
                   }
                 }
               }
             }
-          }
-        },
-        "nginx": {
-          "properties": {
-            "stubstatus": {
-              "properties": {
-                "accepts": {
-                  "type": "long"
-                },
-                "active": {
-                  "type": "long"
-                },
-                "current": {
-                  "type": "long"
-                },
-                "dropped": {
-                  "type": "long"
-                },
-                "handled": {
-                  "type": "long"
-                },
-                "hostname": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "reading": {
-                  "type": "long"
-                },
-                "requests": {
-                  "type": "long"
-                },
-                "waiting": {
-                  "type": "long"
-                },
-                "writing": {
-                  "type": "long"
-                }
-              }
-            }
-          }
-        },
-        "postgresql": {
-          "properties": {
-            "activity": {
-              "properties": {
-                "application_name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "backend_start": {
-                  "type": "date"
-                },
-                "client": {
-                  "properties": {
-                    "address": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "hostname": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "port": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "database": {
-                  "properties": {
-                    "name": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "oid": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "pid": {
-                  "type": "long"
-                },
-                "query": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "query_start": {
-                  "type": "date"
-                },
-                "state": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "state_change": {
-                  "type": "date"
-                },
-                "transaction_start": {
-                  "type": "date"
-                },
-                "user": {
-                  "properties": {
-                    "id": {
-                      "type": "long"
-                    },
-                    "name": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    }
-                  }
-                },
-                "waiting": {
-                  "type": "boolean"
-                }
-              }
-            },
-            "bgwriter": {
-              "properties": {
-                "buffers": {
-                  "properties": {
-                    "allocated": {
-                      "type": "long"
-                    },
-                    "backend": {
-                      "type": "long"
-                    },
-                    "backend_fsync": {
-                      "type": "long"
-                    },
-                    "checkpoints": {
-                      "type": "long"
-                    },
-                    "clean": {
-                      "type": "long"
-                    },
-                    "clean_full": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "checkpoints": {
-                  "properties": {
-                    "requested": {
-                      "type": "long"
-                    },
-                    "scheduled": {
-                      "type": "long"
-                    },
-                    "times": {
-                      "properties": {
-                        "sync": {
-                          "properties": {
-                            "ms": {
-                              "type": "float"
-                            }
-                          }
-                        },
-                        "write": {
-                          "properties": {
-                            "ms": {
-                              "type": "float"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "stats_reset": {
-                  "type": "date"
-                }
-              }
-            },
-            "database": {
-              "properties": {
-                "blocks": {
-                  "properties": {
-                    "hit": {
-                      "type": "long"
-                    },
-                    "read": {
-                      "type": "long"
-                    },
-                    "time": {
-                      "properties": {
-                        "read": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "write": {
-                          "properties": {
-                            "ms": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "conflicts": {
-                  "type": "long"
-                },
-                "deadlocks": {
-                  "type": "long"
-                },
-                "name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "number_of_backends": {
-                  "type": "long"
-                },
-                "oid": {
-                  "type": "long"
-                },
-                "rows": {
-                  "properties": {
-                    "deleted": {
-                      "type": "long"
-                    },
-                    "fetched": {
-                      "type": "long"
-                    },
-                    "inserted": {
-                      "type": "long"
-                    },
-                    "returned": {
-                      "type": "long"
-                    },
-                    "updated": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "stats_reset": {
-                  "type": "date"
-                },
-                "temporary": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "files": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "transactions": {
-                  "properties": {
-                    "commit": {
-                      "type": "long"
-                    },
-                    "rollback": {
-                      "type": "long"
-                    }
+          },
+          "type": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "redis": {
+            "properties": {
+              "keyspace": {
+                "properties": {
+                  "expires": {
+                    "type": "long"
+                  },
+                  "keys": {
+                    "type": "long"
+                  },
+                  "id": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "avg_ttl": {
+                    "type": "long"
                   }
                 }
-              }
-            }
-          }
-        },
-        "redis": {
-          "properties": {
-            "info": {
-              "properties": {
-                "clients": {
-                  "properties": {
-                    "biggest_input_buf": {
-                      "type": "long"
-                    },
-                    "blocked": {
-                      "type": "long"
-                    },
-                    "connected": {
-                      "type": "long"
-                    },
-                    "longest_output_list": {
-                      "type": "long"
+              },
+              "info": {
+                "properties": {
+                  "replication": {
+                    "properties": {
+                      "backlog": {
+                        "properties": {
+                          "size": {
+                            "type": "long"
+                          },
+                          "active": {
+                            "type": "long"
+                          },
+                          "first_byte_offset": {
+                            "type": "long"
+                          },
+                          "histlen": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "role": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "connected_slaves": {
+                        "type": "long"
+                      },
+                      "master_offset": {
+                        "type": "long"
+                      }
                     }
-                  }
-                },
-                "cluster": {
-                  "properties": {
-                    "enabled": {
-                      "type": "boolean"
+                  },
+                  "cluster": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean"
+                      }
                     }
-                  }
-                },
-                "cpu": {
-                  "properties": {
-                    "used": {
-                      "properties": {
-                        "sys": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        },
-                        "sys_children": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        },
-                        "user": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        },
-                        "user_children": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
+                  },
+                  "server": {
+                    "properties": {
+                      "git_dirty": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "tcp_port": {
+                        "type": "long"
+                      },
+                      "process_id": {
+                        "type": "long"
+                      },
+                      "run_id": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "os": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "gcc_version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "version": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "uptime": {
+                        "type": "long"
+                      },
+                      "mode": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "arch_bits": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "hz": {
+                        "type": "long"
+                      },
+                      "build_id": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "multiplexing_api": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "git_sha1": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "config_file": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "lru_clock": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "clients": {
+                    "properties": {
+                      "connected": {
+                        "type": "long"
+                      },
+                      "longest_output_list": {
+                        "type": "long"
+                      },
+                      "blocked": {
+                        "type": "long"
+                      },
+                      "biggest_input_buf": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "memory": {
+                    "properties": {
+                      "allocator": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "used": {
+                        "properties": {
+                          "rss": {
+                            "type": "long"
+                          },
+                          "lua": {
+                            "type": "long"
+                          },
+                          "peak": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
                         }
                       }
                     }
-                  }
-                },
-                "memory": {
-                  "properties": {
-                    "allocator": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "used": {
-                      "properties": {
-                        "lua": {
-                          "type": "long"
-                        },
-                        "peak": {
-                          "type": "long"
-                        },
-                        "rss": {
-                          "type": "long"
-                        },
-                        "value": {
-                          "type": "long"
-                        }
-                      }
-                    }
-                  }
-                },
-                "persistence": {
-                  "properties": {
-                    "aof": {
-                      "properties": {
-                        "bgrewrite": {
-                          "properties": {
-                            "last_status": {
-                              "ignore_above": 1024,
-                              "type": "keyword"
-                            }
-                          }
-                        },
-                        "enabled": {
-                          "type": "boolean"
-                        },
-                        "rewrite": {
-                          "properties": {
-                            "current_time": {
-                              "properties": {
-                                "sec": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "in_progress": {
-                              "type": "boolean"
-                            },
-                            "last_time": {
-                              "properties": {
-                                "sec": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "scheduled": {
-                              "type": "boolean"
-                            }
-                          }
-                        },
-                        "write": {
-                          "properties": {
-                            "last_status": {
-                              "ignore_above": 1024,
-                              "type": "keyword"
-                            }
+                  },
+                  "stats": {
+                    "properties": {
+                      "keyspace": {
+                        "properties": {
+                          "hits": {
+                            "type": "long"
+                          },
+                          "misses": {
+                            "type": "long"
                           }
                         }
-                      }
-                    },
-                    "loading": {
-                      "type": "boolean"
-                    },
-                    "rdb": {
-                      "properties": {
-                        "bgsave": {
-                          "properties": {
-                            "current_time": {
-                              "properties": {
-                                "sec": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "in_progress": {
-                              "type": "boolean"
-                            },
-                            "last_status": {
-                              "ignore_above": 1024,
-                              "type": "keyword"
-                            },
-                            "last_time": {
-                              "properties": {
-                                "sec": {
-                                  "type": "long"
-                                }
+                      },
+                      "latest_fork_usec": {
+                        "type": "long"
+                      },
+                      "keys": {
+                        "properties": {
+                          "expired": {
+                            "type": "long"
+                          },
+                          "evicted": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "commands_processed": {
+                        "type": "long"
+                      },
+                      "instantaneous": {
+                        "properties": {
+                          "output_kbps": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "input_kbps": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "ops_per_sec": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "net": {
+                        "properties": {
+                          "output": {
+                            "properties": {
+                              "bytes": {
+                                "type": "long"
                               }
                             }
-                          }
-                        },
-                        "last_save": {
-                          "properties": {
-                            "changes_since": {
-                              "type": "long"
-                            },
-                            "time": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "replication": {
-                  "properties": {
-                    "backlog": {
-                      "properties": {
-                        "active": {
-                          "type": "long"
-                        },
-                        "first_byte_offset": {
-                          "type": "long"
-                        },
-                        "histlen": {
-                          "type": "long"
-                        },
-                        "size": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "connected_slaves": {
-                      "type": "long"
-                    },
-                    "master_offset": {
-                      "type": "long"
-                    },
-                    "role": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    }
-                  }
-                },
-                "server": {
-                  "properties": {
-                    "arch_bits": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "build_id": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "config_file": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "gcc_version": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "git_dirty": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "git_sha1": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "hz": {
-                      "type": "long"
-                    },
-                    "lru_clock": {
-                      "type": "long"
-                    },
-                    "mode": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "multiplexing_api": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "os": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "process_id": {
-                      "type": "long"
-                    },
-                    "run_id": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "tcp_port": {
-                      "type": "long"
-                    },
-                    "uptime": {
-                      "type": "long"
-                    },
-                    "version": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    }
-                  }
-                },
-                "stats": {
-                  "properties": {
-                    "commands_processed": {
-                      "type": "long"
-                    },
-                    "connections": {
-                      "properties": {
-                        "received": {
-                          "type": "long"
-                        },
-                        "rejected": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "instantaneous": {
-                      "properties": {
-                        "input_kbps": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        },
-                        "ops_per_sec": {
-                          "type": "long"
-                        },
-                        "output_kbps": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        }
-                      }
-                    },
-                    "keys": {
-                      "properties": {
-                        "evicted": {
-                          "type": "long"
-                        },
-                        "expired": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "keyspace": {
-                      "properties": {
-                        "hits": {
-                          "type": "long"
-                        },
-                        "misses": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "latest_fork_usec": {
-                      "type": "long"
-                    },
-                    "migrate_cached_sockets": {
-                      "type": "long"
-                    },
-                    "net": {
-                      "properties": {
-                        "input": {
-                          "properties": {
-                            "bytes": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "output": {
-                          "properties": {
-                            "bytes": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "pubsub": {
-                      "properties": {
-                        "channels": {
-                          "type": "long"
-                        },
-                        "patterns": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "sync": {
-                      "properties": {
-                        "full": {
-                          "type": "long"
-                        },
-                        "partial": {
-                          "properties": {
-                            "err": {
-                              "type": "long"
-                            },
-                            "ok": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "keyspace": {
-              "properties": {
-                "avg_ttl": {
-                  "type": "long"
-                },
-                "expires": {
-                  "type": "long"
-                },
-                "id": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "keys": {
-                  "type": "long"
-                }
-              }
-            }
-          }
-        },
-        "system": {
-          "properties": {
-            "core": {
-              "properties": {
-                "id": {
-                  "type": "long"
-                },
-                "idle": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "iowait": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "irq": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "nice": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "softirq": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "steal": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "system": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "user": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                }
-              }
-            },
-            "cpu": {
-              "properties": {
-                "idle": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "iowait": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "irq": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "nice": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "softirq": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "steal": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "system": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "user": {
-                  "properties": {
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    },
-                    "ticks": {
-                      "type": "long"
-                    }
-                  }
-                }
-              }
-            },
-            "diskio": {
-              "properties": {
-                "io": {
-                  "properties": {
-                    "time": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "read": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "count": {
-                      "type": "long"
-                    },
-                    "time": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "serial_number": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "write": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "count": {
-                      "type": "long"
-                    },
-                    "time": {
-                      "type": "long"
-                    }
-                  }
-                }
-              }
-            },
-            "filesystem": {
-              "properties": {
-                "available": {
-                  "type": "long"
-                },
-                "device_name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "files": {
-                  "type": "long"
-                },
-                "free": {
-                  "type": "long"
-                },
-                "free_files": {
-                  "type": "long"
-                },
-                "mount_point": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "total": {
-                  "type": "long"
-                },
-                "used": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    }
-                  }
-                }
-              }
-            },
-            "fsstat": {
-              "properties": {
-                "count": {
-                  "type": "long"
-                },
-                "total_files": {
-                  "type": "long"
-                },
-                "total_size": {
-                  "properties": {
-                    "free": {
-                      "type": "long"
-                    },
-                    "total": {
-                      "type": "long"
-                    },
-                    "used": {
-                      "type": "long"
-                    }
-                  }
-                }
-              }
-            },
-            "load": {
-              "properties": {
-                "1": {
-                  "scaling_factor": 100,
-                  "type": "scaled_float"
-                },
-                "15": {
-                  "scaling_factor": 100,
-                  "type": "scaled_float"
-                },
-                "5": {
-                  "scaling_factor": 100,
-                  "type": "scaled_float"
-                },
-                "norm": {
-                  "properties": {
-                    "1": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    },
-                    "15": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    },
-                    "5": {
-                      "scaling_factor": 100,
-                      "type": "scaled_float"
-                    }
-                  }
-                }
-              }
-            },
-            "memory": {
-              "properties": {
-                "actual": {
-                  "properties": {
-                    "free": {
-                      "type": "long"
-                    },
-                    "used": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        },
-                        "pct": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        }
-                      }
-                    }
-                  }
-                },
-                "free": {
-                  "type": "long"
-                },
-                "swap": {
-                  "properties": {
-                    "free": {
-                      "type": "long"
-                    },
-                    "total": {
-                      "type": "long"
-                    },
-                    "used": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        },
-                        "pct": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        }
-                      }
-                    }
-                  }
-                },
-                "total": {
-                  "type": "long"
-                },
-                "used": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "pct": {
-                      "scaling_factor": 1000,
-                      "type": "scaled_float"
-                    }
-                  }
-                }
-              }
-            },
-            "network": {
-              "properties": {
-                "in": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "dropped": {
-                      "type": "long"
-                    },
-                    "errors": {
-                      "type": "long"
-                    },
-                    "packets": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "out": {
-                  "properties": {
-                    "bytes": {
-                      "type": "long"
-                    },
-                    "dropped": {
-                      "type": "long"
-                    },
-                    "errors": {
-                      "type": "long"
-                    },
-                    "packets": {
-                      "type": "long"
-                    }
-                  }
-                }
-              }
-            },
-            "process": {
-              "properties": {
-                "cgroup": {
-                  "properties": {
-                    "blkio": {
-                      "properties": {
-                        "id": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "path": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "total": {
-                          "properties": {
-                            "bytes": {
-                              "type": "long"
-                            },
-                            "ios": {
-                              "type": "long"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "cpu": {
-                      "properties": {
-                        "cfs": {
-                          "properties": {
-                            "period": {
-                              "properties": {
-                                "us": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "quota": {
-                              "properties": {
-                                "us": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "shares": {
-                              "type": "long"
-                            }
-                          }
-                        },
-                        "id": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "path": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "rt": {
-                          "properties": {
-                            "period": {
-                              "properties": {
-                                "us": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "runtime": {
-                              "properties": {
-                                "us": {
-                                  "type": "long"
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "stats": {
-                          "properties": {
-                            "periods": {
-                              "type": "long"
-                            },
-                            "throttled": {
-                              "properties": {
-                                "ns": {
-                                  "type": "long"
-                                },
-                                "periods": {
-                                  "type": "long"
-                                }
+                          },
+                          "input": {
+                            "properties": {
+                              "bytes": {
+                                "type": "long"
                               }
                             }
                           }
                         }
-                      }
-                    },
-                    "cpuacct": {
-                      "properties": {
-                        "id": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "path": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "stats": {
-                          "properties": {
-                            "system": {
-                              "properties": {
-                                "ns": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "user": {
-                              "properties": {
-                                "ns": {
-                                  "type": "long"
-                                }
+                      },
+                      "sync": {
+                        "properties": {
+                          "partial": {
+                            "properties": {
+                              "err": {
+                                "type": "long"
+                              },
+                              "ok": {
+                                "type": "long"
                               }
                             }
+                          },
+                          "full": {
+                            "type": "long"
                           }
-                        },
-                        "total": {
-                          "properties": {
-                            "ns": {
-                              "type": "long"
-                            }
+                        }
+                      },
+                      "connections": {
+                        "properties": {
+                          "rejected": {
+                            "type": "long"
+                          },
+                          "received": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "pubsub": {
+                        "properties": {
+                          "channels": {
+                            "type": "long"
+                          },
+                          "patterns": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "migrate_cached_sockets": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "cpu": {
+                    "properties": {
+                      "used": {
+                        "properties": {
+                          "sys_children": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "sys": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "user": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "user_children": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
                           }
                         }
                       }
-                    },
-                    "id": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
-                    },
-                    "memory": {
-                      "properties": {
-                        "id": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "kmem": {
-                          "properties": {
-                            "failures": {
-                              "type": "long"
-                            },
-                            "limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
+                    }
+                  },
+                  "persistence": {
+                    "properties": {
+                      "rdb": {
+                        "properties": {
+                          "last_save": {
+                            "properties": {
+                              "changes_since": {
+                                "type": "long"
+                              },
+                              "time": {
+                                "type": "long"
                               }
-                            },
-                            "usage": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                },
-                                "max": {
-                                  "properties": {
-                                    "bytes": {
-                                      "type": "long"
-                                    }
+                            }
+                          },
+                          "bgsave": {
+                            "properties": {
+                              "in_progress": {
+                                "type": "boolean"
+                              },
+                              "last_time": {
+                                "properties": {
+                                  "sec": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "last_status": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
+                              },
+                              "current_time": {
+                                "properties": {
+                                  "sec": {
+                                    "type": "long"
                                   }
                                 }
                               }
                             }
                           }
-                        },
-                        "kmem_tcp": {
-                          "properties": {
-                            "failures": {
-                              "type": "long"
-                            },
-                            "limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
+                        }
+                      },
+                      "aof": {
+                        "properties": {
+                          "bgrewrite": {
+                            "properties": {
+                              "last_status": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
                               }
-                            },
-                            "usage": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                },
-                                "max": {
-                                  "properties": {
-                                    "bytes": {
-                                      "type": "long"
-                                    }
+                            }
+                          },
+                          "write": {
+                            "properties": {
+                              "last_status": {
+                                "ignore_above": 1024,
+                                "type": "keyword"
+                              }
+                            }
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "rewrite": {
+                            "properties": {
+                              "in_progress": {
+                                "type": "boolean"
+                              },
+                              "last_time": {
+                                "properties": {
+                                  "sec": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "scheduled": {
+                                "type": "boolean"
+                              },
+                              "current_time": {
+                                "properties": {
+                                  "sec": {
+                                    "type": "long"
                                   }
                                 }
                               }
                             }
                           }
-                        },
-                        "mem": {
-                          "properties": {
-                            "failures": {
-                              "type": "long"
-                            },
-                            "limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "usage": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                },
-                                "max": {
-                                  "properties": {
-                                    "bytes": {
-                                      "type": "long"
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "memsw": {
-                          "properties": {
-                            "failures": {
-                              "type": "long"
-                            },
-                            "limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "usage": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                },
-                                "max": {
-                                  "properties": {
-                                    "bytes": {
-                                      "type": "long"
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        },
-                        "path": {
-                          "ignore_above": 1024,
-                          "type": "keyword"
-                        },
-                        "stats": {
-                          "properties": {
-                            "active_anon": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "active_file": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "cache": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "hierarchical_memory_limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "hierarchical_memsw_limit": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "inactive_anon": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "inactive_file": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "major_page_faults": {
-                              "type": "long"
-                            },
-                            "mapped_file": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "page_faults": {
-                              "type": "long"
-                            },
-                            "pages_in": {
-                              "type": "long"
-                            },
-                            "pages_out": {
-                              "type": "long"
-                            },
-                            "rss": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "rss_huge": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "swap": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            },
-                            "unevictable": {
-                              "properties": {
-                                "bytes": {
-                                  "type": "long"
-                                }
-                              }
-                            }
-                          }
                         }
+                      },
+                      "loading": {
+                        "type": "boolean"
                       }
-                    },
-                    "path": {
-                      "ignore_above": 1024,
-                      "type": "keyword"
                     }
                   }
-                },
-                "cmdline": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "cpu": {
-                  "properties": {
-                    "start_time": {
-                      "type": "date"
-                    },
-                    "system": {
-                      "type": "long"
-                    },
-                    "total": {
-                      "properties": {
-                        "pct": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        },
-                        "ticks": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "user": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "fd": {
-                  "properties": {
-                    "limit": {
-                      "properties": {
-                        "hard": {
-                          "type": "long"
-                        },
-                        "soft": {
-                          "type": "long"
-                        }
-                      }
-                    },
-                    "open": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "memory": {
-                  "properties": {
-                    "rss": {
-                      "properties": {
-                        "bytes": {
-                          "type": "long"
-                        },
-                        "pct": {
-                          "scaling_factor": 1000,
-                          "type": "scaled_float"
-                        }
-                      }
-                    },
-                    "share": {
-                      "type": "long"
-                    },
-                    "size": {
-                      "type": "long"
-                    }
-                  }
-                },
-                "name": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "pgid": {
-                  "type": "long"
-                },
-                "pid": {
-                  "type": "long"
-                },
-                "ppid": {
-                  "type": "long"
-                },
-                "state": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "username": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
                 }
               }
             }
-          }
-        },
-        "tags": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "type": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "zookeeper": {
-          "properties": {
-            "mntr": {
-              "properties": {
-                "approximate_data_size": {
-                  "type": "long"
-                },
-                "ephemerals_count": {
-                  "type": "long"
-                },
-                "followers": {
-                  "type": "long"
-                },
-                "hostname": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "latency": {
-                  "properties": {
-                    "avg": {
-                      "type": "long"
-                    },
-                    "max": {
-                      "type": "long"
-                    },
-                    "min": {
-                      "type": "long"
+          },
+          "tags": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "@timestamp": {
+            "type": "date"
+          },
+          "apache": {
+            "properties": {
+              "status": {
+                "properties": {
+                  "hostname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "bytes_per_request": {
+                    "scaling_factor": 1000,
+                    "type": "scaled_float"
+                  },
+                  "load": {
+                    "properties": {
+                      "1": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      },
+                      "5": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      },
+                      "15": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      }
+                    }
+                  },
+                  "bytes_per_sec": {
+                    "scaling_factor": 1000,
+                    "type": "scaled_float"
+                  },
+                  "cpu": {
+                    "properties": {
+                      "system": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "children_system": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "load": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "children_user": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "user": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      }
+                    }
+                  },
+                  "scoreboard": {
+                    "properties": {
+                      "total": {
+                        "type": "long"
+                      },
+                      "idle_cleanup": {
+                        "type": "long"
+                      },
+                      "keepalive": {
+                        "type": "long"
+                      },
+                      "waiting_for_connection": {
+                        "type": "long"
+                      },
+                      "gracefully_finishing": {
+                        "type": "long"
+                      },
+                      "logging": {
+                        "type": "long"
+                      },
+                      "open_slot": {
+                        "type": "long"
+                      },
+                      "dns_lookup": {
+                        "type": "long"
+                      },
+                      "sending_reply": {
+                        "type": "long"
+                      },
+                      "closing_connection": {
+                        "type": "long"
+                      },
+                      "reading_request": {
+                        "type": "long"
+                      },
+                      "starting_up": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "total_accesses": {
+                    "type": "long"
+                  },
+                  "total_kbytes": {
+                    "type": "long"
+                  },
+                  "workers": {
+                    "properties": {
+                      "idle": {
+                        "type": "long"
+                      },
+                      "busy": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "connections": {
+                    "properties": {
+                      "async": {
+                        "properties": {
+                          "closing": {
+                            "type": "long"
+                          },
+                          "writing": {
+                            "type": "long"
+                          },
+                          "keep_alive": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "total": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "requests_per_sec": {
+                    "scaling_factor": 1000,
+                    "type": "scaled_float"
+                  },
+                  "uptime": {
+                    "properties": {
+                      "server_uptime": {
+                        "type": "long"
+                      },
+                      "uptime": {
+                        "type": "long"
+                      }
                     }
                   }
-                },
-                "max_file_descriptor_count": {
-                  "type": "long"
-                },
-                "num_alive_connections": {
-                  "type": "long"
-                },
-                "open_file_descriptor_count": {
-                  "type": "long"
-                },
-                "outstanding_requests": {
-                  "type": "long"
-                },
-                "packets": {
-                  "properties": {
-                    "received": {
-                      "type": "long"
-                    },
-                    "sent": {
-                      "type": "long"
+                }
+              }
+            }
+          },
+          "system": {
+            "properties": {
+              "core": {
+                "properties": {
+                  "system": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "softirq": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "idle": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "steal": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "irq": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "id": {
+                    "type": "long"
+                  },
+                  "iowait": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "user": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "nice": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
                     }
                   }
-                },
-                "pending_syncs": {
-                  "type": "long"
-                },
-                "server_state": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "synced_followers": {
-                  "type": "long"
-                },
-                "version": {
-                  "ignore_above": 1024,
-                  "type": "keyword"
-                },
-                "watch_count": {
-                  "type": "long"
-                },
-                "znode_count": {
-                  "type": "long"
+                }
+              },
+              "diskio": {
+                "properties": {
+                  "read": {
+                    "properties": {
+                      "bytes": {
+                        "type": "long"
+                      },
+                      "count": {
+                        "type": "long"
+                      },
+                      "time": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "io": {
+                    "properties": {
+                      "time": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "serial_number": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "write": {
+                    "properties": {
+                      "bytes": {
+                        "type": "long"
+                      },
+                      "count": {
+                        "type": "long"
+                      },
+                      "time": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              },
+              "process": {
+                "properties": {
+                  "cmdline": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "memory": {
+                    "properties": {
+                      "rss": {
+                        "properties": {
+                          "pct": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "size": {
+                        "type": "long"
+                      },
+                      "share": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "pgid": {
+                    "type": "long"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "cpu": {
+                    "properties": {
+                      "start_time": {
+                        "type": "date"
+                      },
+                      "total": {
+                        "properties": {
+                          "pct": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "ticks": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "system": {
+                        "type": "long"
+                      },
+                      "user": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "cgroup": {
+                    "properties": {
+                      "blkio": {
+                        "properties": {
+                          "path": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "total": {
+                            "properties": {
+                              "bytes": {
+                                "type": "long"
+                              },
+                              "ios": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "id": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "path": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "memory": {
+                        "properties": {
+                          "path": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "mem": {
+                            "properties": {
+                              "failures": {
+                                "type": "long"
+                              },
+                              "usage": {
+                                "properties": {
+                                  "max": {
+                                    "properties": {
+                                      "bytes": {
+                                        "type": "long"
+                                      }
+                                    }
+                                  },
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "stats": {
+                            "properties": {
+                              "inactive_anon": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "cache": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "rss_huge": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "mapped_file": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "swap": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "unevictable": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "active_anon": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "pages_in": {
+                                "type": "long"
+                              },
+                              "hierarchical_memory_limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "page_faults": {
+                                "type": "long"
+                              },
+                              "pages_out": {
+                                "type": "long"
+                              },
+                              "inactive_file": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "hierarchical_memsw_limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "rss": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "major_page_faults": {
+                                "type": "long"
+                              },
+                              "active_file": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "memsw": {
+                            "properties": {
+                              "failures": {
+                                "type": "long"
+                              },
+                              "usage": {
+                                "properties": {
+                                  "max": {
+                                    "properties": {
+                                      "bytes": {
+                                        "type": "long"
+                                      }
+                                    }
+                                  },
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "kmem_tcp": {
+                            "properties": {
+                              "failures": {
+                                "type": "long"
+                              },
+                              "usage": {
+                                "properties": {
+                                  "max": {
+                                    "properties": {
+                                      "bytes": {
+                                        "type": "long"
+                                      }
+                                    }
+                                  },
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "kmem": {
+                            "properties": {
+                              "failures": {
+                                "type": "long"
+                              },
+                              "usage": {
+                                "properties": {
+                                  "max": {
+                                    "properties": {
+                                      "bytes": {
+                                        "type": "long"
+                                      }
+                                    }
+                                  },
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "limit": {
+                                "properties": {
+                                  "bytes": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "id": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "cpu": {
+                        "properties": {
+                          "cfs": {
+                            "properties": {
+                              "shares": {
+                                "type": "long"
+                              },
+                              "period": {
+                                "properties": {
+                                  "us": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "quota": {
+                                "properties": {
+                                  "us": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "path": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "rt": {
+                            "properties": {
+                              "period": {
+                                "properties": {
+                                  "us": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "runtime": {
+                                "properties": {
+                                  "us": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "stats": {
+                            "properties": {
+                              "periods": {
+                                "type": "long"
+                              },
+                              "throttled": {
+                                "properties": {
+                                  "ns": {
+                                    "type": "long"
+                                  },
+                                  "periods": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "id": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      },
+                      "id": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "cpuacct": {
+                        "properties": {
+                          "path": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          },
+                          "total": {
+                            "properties": {
+                              "ns": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "stats": {
+                            "properties": {
+                              "system": {
+                                "properties": {
+                                  "ns": {
+                                    "type": "long"
+                                  }
+                                }
+                              },
+                              "user": {
+                                "properties": {
+                                  "ns": {
+                                    "type": "long"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "id": {
+                            "ignore_above": 1024,
+                            "type": "keyword"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "fd": {
+                    "properties": {
+                      "limit": {
+                        "properties": {
+                          "hard": {
+                            "type": "long"
+                          },
+                          "soft": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "open": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "ppid": {
+                    "type": "long"
+                  },
+                  "username": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "memory": {
+                "properties": {
+                  "actual": {
+                    "properties": {
+                      "used": {
+                        "properties": {
+                          "pct": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "free": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "total": {
+                    "type": "long"
+                  },
+                  "swap": {
+                    "properties": {
+                      "total": {
+                        "type": "long"
+                      },
+                      "used": {
+                        "properties": {
+                          "pct": {
+                            "scaling_factor": 1000,
+                            "type": "scaled_float"
+                          },
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "free": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "used": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "bytes": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "free": {
+                    "type": "long"
+                  }
+                }
+              },
+              "load": {
+                "properties": {
+                  "1": {
+                    "scaling_factor": 100,
+                    "type": "scaled_float"
+                  },
+                  "5": {
+                    "scaling_factor": 100,
+                    "type": "scaled_float"
+                  },
+                  "15": {
+                    "scaling_factor": 100,
+                    "type": "scaled_float"
+                  },
+                  "norm": {
+                    "properties": {
+                      "1": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      },
+                      "5": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      },
+                      "15": {
+                        "scaling_factor": 100,
+                        "type": "scaled_float"
+                      }
+                    }
+                  }
+                }
+              },
+              "cpu": {
+                "properties": {
+                  "system": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "softirq": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "idle": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "steal": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "irq": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "iowait": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "user": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "nice": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "ticks": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              },
+              "fsstat": {
+                "properties": {
+                  "total_files": {
+                    "type": "long"
+                  },
+                  "count": {
+                    "type": "long"
+                  },
+                  "total_size": {
+                    "properties": {
+                      "total": {
+                        "type": "long"
+                      },
+                      "used": {
+                        "type": "long"
+                      },
+                      "free": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              },
+              "filesystem": {
+                "properties": {
+                  "device_name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "total": {
+                    "type": "long"
+                  },
+                  "free_files": {
+                    "type": "long"
+                  },
+                  "mount_point": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "available": {
+                    "type": "long"
+                  },
+                  "files": {
+                    "type": "long"
+                  },
+                  "value": {
+                    "type": "long"
+                  },
+                  "used": {
+                    "properties": {
+                      "pct": {
+                        "scaling_factor": 1000,
+                        "type": "scaled_float"
+                      },
+                      "bytes": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "free": {
+                    "type": "long"
+                  }
+                }
+              },
+              "network": {
+                "properties": {
+                  "in": {
+                    "properties": {
+                      "bytes": {
+                        "type": "long"
+                      },
+                      "dropped": {
+                        "type": "long"
+                      },
+                      "errors": {
+                        "type": "long"
+                      },
+                      "packets": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "out": {
+                    "properties": {
+                      "bytes": {
+                        "type": "long"
+                      },
+                      "dropped": {
+                        "type": "long"
+                      },
+                      "errors": {
+                        "type": "long"
+                      },
+                      "packets": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "postgresql": {
+            "properties": {
+              "database": {
+                "properties": {
+                  "temporary": {
+                    "properties": {
+                      "bytes": {
+                        "type": "long"
+                      },
+                      "files": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "blocks": {
+                    "properties": {
+                      "hit": {
+                        "type": "long"
+                      },
+                      "read": {
+                        "type": "long"
+                      },
+                      "time": {
+                        "properties": {
+                          "read": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "write": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "stats_reset": {
+                    "type": "date"
+                  },
+                  "number_of_backends": {
+                    "type": "long"
+                  },
+                  "name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "conflicts": {
+                    "type": "long"
+                  },
+                  "oid": {
+                    "type": "long"
+                  },
+                  "rows": {
+                    "properties": {
+                      "deleted": {
+                        "type": "long"
+                      },
+                      "inserted": {
+                        "type": "long"
+                      },
+                      "returned": {
+                        "type": "long"
+                      },
+                      "updated": {
+                        "type": "long"
+                      },
+                      "fetched": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "transactions": {
+                    "properties": {
+                      "rollback": {
+                        "type": "long"
+                      },
+                      "commit": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "deadlocks": {
+                    "type": "long"
+                  }
+                }
+              },
+              "activity": {
+                "properties": {
+                  "database": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "oid": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "application_name": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "waiting": {
+                    "type": "boolean"
+                  },
+                  "backend_start": {
+                    "type": "date"
+                  },
+                  "query": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "transaction_start": {
+                    "type": "date"
+                  },
+                  "client": {
+                    "properties": {
+                      "hostname": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "address": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "port": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "query_start": {
+                    "type": "date"
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "state": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "state_change": {
+                    "type": "date"
+                  },
+                  "user": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "id": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              },
+              "bgwriter": {
+                "properties": {
+                  "buffers": {
+                    "properties": {
+                      "checkpoints": {
+                        "type": "long"
+                      },
+                      "backend": {
+                        "type": "long"
+                      },
+                      "clean": {
+                        "type": "long"
+                      },
+                      "backend_fsync": {
+                        "type": "long"
+                      },
+                      "clean_full": {
+                        "type": "long"
+                      },
+                      "allocated": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "stats_reset": {
+                    "type": "date"
+                  },
+                  "checkpoints": {
+                    "properties": {
+                      "requested": {
+                        "type": "long"
+                      },
+                      "times": {
+                        "properties": {
+                          "sync": {
+                            "properties": {
+                              "ms": {
+                                "type": "float"
+                              }
+                            }
+                          },
+                          "write": {
+                            "properties": {
+                              "ms": {
+                                "type": "float"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "scheduled": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "beat": {
+            "properties": {
+              "hostname": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "name": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "version": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              }
+            }
+          },
+          "haproxy": {
+            "properties": {
+              "stat": {
+                "properties": {
+                  "svname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "throttle": {
+                    "type": "long"
+                  },
+                  "bout": {
+                    "type": "long"
+                  },
+                  "dresp": {
+                    "type": "long"
+                  },
+                  "lbtot": {
+                    "type": "long"
+                  },
+                  "rtime": {
+                    "type": "long"
+                  },
+                  "iid": {
+                    "type": "long"
+                  },
+                  "bin": {
+                    "type": "long"
+                  },
+                  "slim": {
+                    "type": "long"
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "tracked": {
+                    "type": "long"
+                  },
+                  "bck": {
+                    "type": "long"
+                  },
+                  "sid": {
+                    "type": "long"
+                  },
+                  "chkfail": {
+                    "type": "long"
+                  },
+                  "qtime": {
+                    "type": "long"
+                  },
+                  "component_type": {
+                    "type": "long"
+                  },
+                  "econ": {
+                    "type": "long"
+                  },
+                  "act": {
+                    "type": "long"
+                  },
+                  "dreq": {
+                    "type": "long"
+                  },
+                  "rate": {
+                    "properties": {
+                      "lim": {
+                        "type": "long"
+                      },
+                      "max": {
+                        "type": "long"
+                      },
+                      "value": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "hrsp": {
+                    "properties": {
+                      "1xx": {
+                        "type": "long"
+                      },
+                      "2xx": {
+                        "type": "long"
+                      },
+                      "other": {
+                        "type": "long"
+                      },
+                      "3xx": {
+                        "type": "long"
+                      },
+                      "4xx": {
+                        "type": "long"
+                      },
+                      "5xx": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "scur": {
+                    "type": "long"
+                  },
+                  "ctime": {
+                    "type": "long"
+                  },
+                  "ttime": {
+                    "type": "long"
+                  },
+                  "srv_abrt": {
+                    "type": "long"
+                  },
+                  "chkdown": {
+                    "type": "long"
+                  },
+                  "qcur": {
+                    "type": "long"
+                  },
+                  "qlimit": {
+                    "type": "long"
+                  },
+                  "req": {
+                    "properties": {
+                      "rate": {
+                        "properties": {
+                          "max": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "tot": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "comp": {
+                    "properties": {
+                      "in": {
+                        "type": "long"
+                      },
+                      "byp": {
+                        "type": "long"
+                      },
+                      "rsp": {
+                        "type": "long"
+                      },
+                      "out": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "wredis": {
+                    "type": "long"
+                  },
+                  "last": {
+                    "properties": {
+                      "chk": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      },
+                      "sess": {
+                        "type": "long"
+                      },
+                      "agt": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "smax": {
+                    "type": "long"
+                  },
+                  "qmax": {
+                    "type": "long"
+                  },
+                  "cli_abrt": {
+                    "type": "long"
+                  },
+                  "weight": {
+                    "type": "long"
+                  },
+                  "wretr": {
+                    "type": "long"
+                  },
+                  "check": {
+                    "properties": {
+                      "duration": {
+                        "type": "long"
+                      },
+                      "code": {
+                        "type": "long"
+                      },
+                      "status": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "stot": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "downtime": {
+                    "type": "long"
+                  },
+                  "eresp": {
+                    "type": "long"
+                  },
+                  "ereq": {
+                    "type": "long"
+                  },
+                  "hanafail": {
+                    "type": "long"
+                  },
+                  "lastchg": {
+                    "type": "long"
+                  },
+                  "pxname": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "status": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  }
+                }
+              },
+              "info": {
+                "properties": {
+                  "process_num": {
+                    "type": "long"
+                  },
+                  "conn": {
+                    "properties": {
+                      "rate": {
+                        "properties": {
+                          "limit": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "idle_pct": {
+                    "scaling_factor": 1000,
+                    "type": "scaled_float"
+                  },
+                  "zlib_mem_usage": {
+                    "type": "long"
+                  },
+                  "compress": {
+                    "properties": {
+                      "bps": {
+                        "properties": {
+                          "rate_limit": {
+                            "type": "long"
+                          },
+                          "in": {
+                            "type": "long"
+                          },
+                          "out": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "max": {
+                    "properties": {
+                      "sock": {
+                        "type": "long"
+                      },
+                      "conn": {
+                        "properties": {
+                          "rate": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "hard_conn": {
+                        "type": "long"
+                      },
+                      "sess_rate": {
+                        "type": "long"
+                      },
+                      "zlib_mem_usage": {
+                        "type": "long"
+                      },
+                      "ssl": {
+                        "properties": {
+                          "conns": {
+                            "type": "long"
+                          },
+                          "rate": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "pipes": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "run_queue": {
+                    "type": "long"
+                  },
+                  "sess": {
+                    "properties": {
+                      "rate": {
+                        "properties": {
+                          "limit": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "pid": {
+                    "type": "long"
+                  },
+                  "ssl": {
+                    "properties": {
+                      "cache_misses": {
+                        "type": "long"
+                      },
+                      "rate": {
+                        "properties": {
+                          "limit": {
+                            "type": "long"
+                          },
+                          "value": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "cached_lookups": {
+                        "type": "long"
+                      },
+                      "backend": {
+                        "properties": {
+                          "max_key_rate": {
+                            "type": "long"
+                          },
+                          "key_rate": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "frontend": {
+                        "properties": {
+                          "max_key_rate": {
+                            "type": "long"
+                          },
+                          "session_reuse_pct": {
+                            "type": "long"
+                          },
+                          "key_rate": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "uptime_sec": {
+                    "type": "long"
+                  },
+                  "nb_proc": {
+                    "type": "long"
+                  },
+                  "cum": {
+                    "properties": {
+                      "conns": {
+                        "type": "long"
+                      },
+                      "ssl_conns": {
+                        "type": "long"
+                      },
+                      "req": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "mem_max_bytes": {
+                    "type": "long"
+                  },
+                  "curr": {
+                    "properties": {
+                      "conns": {
+                        "type": "long"
+                      },
+                      "ssl_conns": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "ulimit_n": {
+                    "type": "long"
+                  },
+                  "pipes": {
+                    "properties": {
+                      "used": {
+                        "type": "long"
+                      },
+                      "free": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "tasks": {
+                    "type": "long"
+                  }
+                }
+              }
+            }
+          },
+          "metricset": {
+            "properties": {
+              "rtt": {
+                "type": "long"
+              },
+              "module": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "host": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              },
+              "name": {
+                "ignore_above": 1024,
+                "type": "keyword"
+              }
+            }
+          },
+          "mysql": {
+            "properties": {
+              "status": {
+                "properties": {
+                  "flush_commands": {
+                    "type": "long"
+                  },
+                  "aborted": {
+                    "properties": {
+                      "clients": {
+                        "type": "long"
+                      },
+                      "connects": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "bytes": {
+                    "properties": {
+                      "received": {
+                        "type": "long"
+                      },
+                      "sent": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "created": {
+                    "properties": {
+                      "tmp": {
+                        "properties": {
+                          "tables": {
+                            "type": "long"
+                          },
+                          "files": {
+                            "type": "long"
+                          },
+                          "disk_tables": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "opened_tables": {
+                    "type": "long"
+                  },
+                  "threads": {
+                    "properties": {
+                      "connected": {
+                        "type": "long"
+                      },
+                      "running": {
+                        "type": "long"
+                      },
+                      "created": {
+                        "type": "long"
+                      },
+                      "cached": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "delayed": {
+                    "properties": {
+                      "insert_threads": {
+                        "type": "long"
+                      },
+                      "writes": {
+                        "type": "long"
+                      },
+                      "errors": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "max_used_connections": {
+                    "type": "long"
+                  },
+                  "binlog": {
+                    "properties": {
+                      "cache": {
+                        "properties": {
+                          "disk_use": {
+                            "type": "long"
+                          },
+                          "use": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "connections": {
+                    "type": "long"
+                  },
+                  "open": {
+                    "properties": {
+                      "tables": {
+                        "type": "long"
+                      },
+                      "streams": {
+                        "type": "long"
+                      },
+                      "files": {
+                        "type": "long"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "mongodb": {
+            "properties": {
+              "status": {
+                "properties": {
+                  "memory": {
+                    "properties": {
+                      "virtual": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "bits": {
+                        "type": "long"
+                      },
+                      "mapped": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "mapped_with_journal": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "resident": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "opcounters": {
+                    "properties": {
+                      "query": {
+                        "type": "long"
+                      },
+                      "insert": {
+                        "type": "long"
+                      },
+                      "update": {
+                        "type": "long"
+                      },
+                      "getmore": {
+                        "type": "long"
+                      },
+                      "delete": {
+                        "type": "long"
+                      },
+                      "command": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "journaling": {
+                    "properties": {
+                      "commits_in_write_lock": {
+                        "type": "long"
+                      },
+                      "early_commits": {
+                        "type": "long"
+                      },
+                      "times": {
+                        "properties": {
+                          "commits_in_write_lock": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "dt": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "write_to_journal": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "commits": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "write_to_data_files": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "prep_log_buffer": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          },
+                          "remap_private_view": {
+                            "properties": {
+                              "ms": {
+                                "type": "long"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "journaled": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "commits": {
+                        "type": "long"
+                      },
+                      "write_to_data_files": {
+                        "properties": {
+                          "mb": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "compression": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "write_backs_queued": {
+                    "type": "boolean"
+                  },
+                  "version": {
+                    "ignore_above": 1024,
+                    "type": "keyword"
+                  },
+                  "opcounters_replicated": {
+                    "properties": {
+                      "query": {
+                        "type": "long"
+                      },
+                      "insert": {
+                        "type": "long"
+                      },
+                      "update": {
+                        "type": "long"
+                      },
+                      "getmore": {
+                        "type": "long"
+                      },
+                      "delete": {
+                        "type": "long"
+                      },
+                      "command": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "network": {
+                    "properties": {
+                      "in": {
+                        "properties": {
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "requests": {
+                        "type": "long"
+                      },
+                      "out": {
+                        "properties": {
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "uptime": {
+                    "properties": {
+                      "ms": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "asserts": {
+                    "properties": {
+                      "msg": {
+                        "type": "long"
+                      },
+                      "rollovers": {
+                        "type": "long"
+                      },
+                      "warning": {
+                        "type": "long"
+                      },
+                      "user": {
+                        "type": "long"
+                      },
+                      "regular": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "extra_info": {
+                    "properties": {
+                      "heap_usage": {
+                        "properties": {
+                          "bytes": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "page_faults": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "local_time": {
+                    "type": "date"
+                  },
+                  "background_flushing": {
+                    "properties": {
+                      "average": {
+                        "properties": {
+                          "ms": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "total": {
+                        "properties": {
+                          "ms": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "last": {
+                        "properties": {
+                          "ms": {
+                            "type": "long"
+                          }
+                        }
+                      },
+                      "last_finished": {
+                        "type": "date"
+                      },
+                      "flushes": {
+                        "type": "long"
+                      }
+                    }
+                  },
+                  "storage_engine": {
+                    "properties": {
+                      "name": {
+                        "ignore_above": 1024,
+                        "type": "keyword"
+                      }
+                    }
+                  },
+                  "connections": {
+                    "properties": {
+                      "current": {
+                        "type": "long"
+                      },
+                      "available": {
+                        "type": "long"
+                      },
+                      "total_created": {
+                        "type": "long"
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-  },
-  "order": 0,
-  "settings": {
-    "index.refresh_interval": "5s"
-  },
-  "template": "metricbeat-*"
-}
+    },
+    "aliases": {}
+  }

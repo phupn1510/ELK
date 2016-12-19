@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-IP_ELK=10.10.10.10 
+IP_ELK=10.123.0.108
 
 /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.0.2-amd64.deb
 /usr/bin/dpkg -i filebeat-5.0.2-amd64.deb
