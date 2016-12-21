@@ -10,4 +10,5 @@ net=$(ifconfig eth0 | awk '/inet addr/{print substr($2,6)}')
 /bin/sed -i 's/localhost/'$net'/g' logstash/config/first-pipeline.conf
 /bin/sed -i 's/localhost/'$net'/g' logstash/config/second-pipeline.conf
 /bin/sed -i 's/localhost/'$net'/g' input_template.sh
-sudo sysctl -w vm.max_map_count=262144
+echo 'vm.max_map_count=262144' >> /etc/sysctl.conf
+/sbin/sysctl -p
