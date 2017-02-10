@@ -27,7 +27,7 @@ This script to get IP address of host and create storage of ES data
  
  
  ```
- chomod +x input_template.sh
+ chmod +x input_template.sh
  ./input_template.sh
  ```
  This script to create a template of ES index
