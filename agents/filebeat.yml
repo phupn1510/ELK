@@ -19,40 +19,24 @@ filebeat.prospectors:
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /var/log/syslog
-    - /var/log/auth.log
-    - /var/log/nginx/access.log
+    - /var/log/syslog.log
   document_type: syslog
-#  fields:
- #   type_beats: filebeat
+- input_type: log
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/auth.log
+  document_type: auth-log
+- input_type: log
+
+  # Paths that should be crawled and fetched. Glob based paths.
+  paths:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+  document_type: syslog  
+    
     #- c:\programdata\elasticsearch\logs\*
-#- input_type: log
-#  paths:
-#    - /var/log/nginx/axonivy.access.log
-#    - /var/log/nginx/klara-dev.axonivy.io.log
-#  exclude_files: [".gz$"]
-#  document_type: nginx-access
-#  scan_frequency: 1s
-#  harvester_buffer_size: 16384
-#  max_bytes: 10485760
-#  max_backoff: 2s
-#  backoff_factor: 2
-#  spool_size: 2048
-#  idle_timeout: 1s
-#  registry_file: /var/lib/filebeat/registry
-#- input_type: log
-#  paths:
-#    - /var/log/nginx/axonivy.error.log
-#  exclude_files: [".gz$"]
-#  document_type: nginx-error
-#  scan_frequency: 10s
-#  harvester_buffer_size: 16384
-#  max_bytes: 10485760
-#  max_backoff: 10s
-#  backoff_factor: 2
-#  spool_size: 2048
-#  idle_timeout: 5s
-#  registry_file: /var/lib/filebeat/registry
+
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
   # matching any regular expression from the list.
   #exclude_lines: ["^DBG"]
@@ -78,6 +62,7 @@ filebeat.prospectors:
 
   # The regexp Pattern that has to be matched. The example pattern matches all lines starting with [
   #multiline.pattern: ^\[
+
   # Defines if the pattern set under pattern should be negated or not. Default is false.
   #multiline.negate: false
 
@@ -122,22 +107,16 @@ output.logstash:
   # The Logstash hosts
   hosts: ["localhost:5044"]
 
-#output.redis:
- # hosts: ["localhost"]
-#  key: "filebeat"
-#  db: 0
-#  timeout: 5
-#  bulk_max_size: 0
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
-  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+ # ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
 
   # Certificate for SSL client authentication
   #ssl.certificate: "/etc/pki/client/cert.pem"
 
   # Client Certificate Key
   #ssl.key: "/etc/pki/client/cert.key"
-  
+
 #================================ Logging =====================================
 
 # Sets log level. The default log level is info.

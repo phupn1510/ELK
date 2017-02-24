@@ -26,9 +26,9 @@ packetbeat.flows:
 
 #========================== Transaction protocols =============================
 
-packetbeat.protocols.icmp:
+#packetbeat.protocols.icmp:
   # Enable ICMPv4 and ICMPv6 monitoring. Default: false
-  enabled: true
+#  enabled: true
 
 #packetbeat.protocols.amqp:
   # Configure the ports where to listen for AMQP traffic. You can disable
@@ -37,32 +37,30 @@ packetbeat.protocols.icmp:
 
 #packetbeat.protocols.cassandra:
   #Cassandra port for traffic monitoring.
- # ports: [9042]
+#  ports: [9042]
 
-#packetbeat.protocols.dns:
+packetbeat.protocols.dns:
   # Configure the ports where to listen for DNS traffic. You can disable
   # the DNS protocol by commenting out the list of ports.
-#  ports: [53]
+  ports: [53]
 
   # include_authorities controls whether or not the dns.authorities field
   # (authority resource records) is added to messages.
-#  include_authorities: true
+  include_authorities: true
 
   # include_additionals controls whether or not the dns.additionals field
   # (additional resource records) is added to messages.
-  # include_additionals controls whether or not the dns.additionals field
-  # (additional resource records) is added to messages.
-#  include_additionals: true
+  include_additionals: true
 
 packetbeat.protocols.http:
   # Configure the ports where to listen for HTTP traffic. You can disable
   # the HTTP protocol by commenting out the list of ports.
-  ports: [80, 443, 8080, 8000, 5000, 8002]
+  ports: [80,443, 8080, 8000, 5000, 8002]
 
-#packetbeat.protocols.memcache:
+packetbeat.protocols.memcache:
   # Configure the ports where to listen for memcache traffic. You can disable
   # the Memcache protocol by commenting out the list of ports.
-#  ports: [11211]
+  ports: [11211]
 
 packetbeat.protocols.mysql:
   # Configure the ports where to listen for MySQL traffic. You can disable
@@ -78,6 +76,7 @@ packetbeat.protocols.pgsql:
   # Configure the ports where to listen for Redis traffic. You can disable
   # the Redis protocol by commenting out the list of ports.
 #  ports: [6379]
+
 #packetbeat.protocols.thrift:
   # Configure the ports where to listen for Thrift-RPC traffic. You can disable
   # the Thrift-RPC protocol by commenting out the list of ports.
@@ -127,14 +126,11 @@ packetbeat.protocols.pgsql:
 output.logstash:
   # The Logstash hosts
   hosts: ["localhost:5044"]
-#output.redis:
-#  hosts: ["localhost"]
-#  key: "packetbeat"
-#  db: 0
-#  timeout: 5
+
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+
   # Certificate for SSL client authentication
   #ssl.certificate: "/etc/pki/client/cert.pem"
 

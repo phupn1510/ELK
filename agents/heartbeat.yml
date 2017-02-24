@@ -1,52 +1,26 @@
-###################### Metricbeat Configuration Example #######################
+################### Heartbeat Configuration Example #########################
 
-# This file is an example configuration file highlighting only the most common
-# options. The metricbeat.full.yml file from the same directory contains all the
-# supported options with more comments. You can use it as a reference.
+# This file is an example configuration file highlighting only some common options.
+# The heartbeat.full.yml file in the same directory contains all the supported options
+# with detailed comments. You can use it for reference.
 #
 # You can find the full configuration reference here:
-# https://www.elastic.co/guide/en/beats/metricbeat/index.html
+# https://www.elastic.co/guide/en/beats/heartbeat/index.html
 
-#==========================  Modules configuration ============================
-metricbeat.modules:
+############################# Heartbeat ######################################
 
-#------------------------------- System Module -------------------------------
-- module: system
-  metricsets:
-    # CPU stats
-    - cpu
+# Configure monitors
+heartbeat.monitors:
+- type: http
 
-    # System Load stats
-    - load
+  # List or urls to query
+  urls: ["http://localhost:80"]
+  check.response.status: 200
+  # Configure task schedule
+  schedule: '@every 10s'
 
-    # Per CPU core stats
-    - core
-
-    # IO stats
-    - diskio
-
-    # Per filesystem stats
-    - filesystem
-
-    # File system summary stats
-    - fsstat
-
-    # Memory stats
-    - memory
-
-    # Network stats
-    - network
-
-    # Per process stats
-    - process
-
-    # Sockets (linux only)
-    #- socket
-  enabled: true
-  period: 10s
-  processes: ['.*']
-
-
+  # Total test connection and data exchange timeout
+  #timeout: 16s
 
 #================================ General =====================================
 
@@ -71,7 +45,7 @@ metricbeat.modules:
 #-------------------------- Elasticsearch output ------------------------------
 #output.elasticsearch:
   # Array of hosts to connect to.
-#  hosts: ["localhost:9200"]
+ # hosts: ["localhost:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"

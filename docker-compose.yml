@@ -37,6 +37,8 @@ services:
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
       - ./logstash/tmp:/tmp
+      - ./logstash-forwarder.crt:/etc/pki/tls/certs/logstash-forwarder.crt
+      - ./logstash-forwarder.key:/etc/pki/tls/certs/logstash-forwarder.key
     ports:
       - "5044:5044"
       - "25826:25826/udp"
