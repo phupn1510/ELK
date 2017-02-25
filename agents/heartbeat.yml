@@ -14,7 +14,7 @@ heartbeat.monitors:
 - type: http
 
   # List or urls to query
-  urls: ["http://localhost:80"]
+  urls: ["http://127.0.0.1:80"]
   check.response.status: 200
   # Configure task schedule
   schedule: '@every 10s'
@@ -45,7 +45,7 @@ heartbeat.monitors:
 #-------------------------- Elasticsearch output ------------------------------
 #output.elasticsearch:
   # Array of hosts to connect to.
- # hosts: ["localhost:9200"]
+ # hosts: ["127.0.0.1:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
@@ -55,7 +55,7 @@ heartbeat.monitors:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["localhost:5044"]
+  hosts: ["127.0.0.1:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

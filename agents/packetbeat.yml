@@ -115,7 +115,7 @@ packetbeat.protocols.pgsql:
 #-------------------------- Elasticsearch output ------------------------------
 #output.elasticsearch:
   # Array of hosts to connect to.
-#  hosts: ["localhost:9200"]
+#  hosts: ["127.0.0.1:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
@@ -125,7 +125,7 @@ packetbeat.protocols.pgsql:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["localhost:5044"]
+  hosts: ["127.0.0.1:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

@@ -2,7 +2,7 @@
 mkdir -p /opt/elasticsearch/data
 chmod 766 -R /opt/elasticsearch/data
 chmod 766 -R logstash/tmp
-net=$(ifconfig eth0 | awk '/inet addr/{print substr($2,6)}')
+net=$(ifconfig eth1 | awk '/inet addr/{print substr($2,6)}')
 #sed -i 's/original/new/g' file.txt
 
 /bin/sed -i 's/localhost/'$net'/g' nginx/default.conf

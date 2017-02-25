@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-IP_ELK=10.123.0.108 
+IP_ELK=127.0.0.1 
 /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-5.2.1-amd64.deb
 /usr/bin/dpkg -i heartbeat-5.2.1-amd64.deb
 /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.1-amd64.deb

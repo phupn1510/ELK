@@ -4,3 +4,4 @@ COPY commons.style.css /usr/share/kibana/optimize/bundles/commons.style.css
 COPY chrome.jade /usr/share/kibana/src/ui/views
 COPY ui_app.jade /usr/share/kibana/src/ui/views
 COPY kibana.svg /usr/share/kibana/src/ui/public/images/kibana.svg
+COPY favicon.ico /usr/share/kibana/src/ui/public/views/favicon.ico
