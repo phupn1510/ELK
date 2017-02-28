@@ -1,7 +1,7 @@
 import ManagementSection from './section';
 
 const sections = new ManagementSection('management', {
-  display: 'Management'
+  display: 'VNPT'
 });
 
 // TODO: where should this live?
@@ -16,7 +16,7 @@ sections.register('elasticsearch', {
 });
 
 sections.register('kibana', {
-  display: 'Kibana',
+  display: 'VNPT',
   order: 20,
 });
 

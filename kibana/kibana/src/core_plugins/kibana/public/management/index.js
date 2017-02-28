@@ -48,6 +48,7 @@ uiModules
       }
 
       management.getSection('kibana').info = `Build ${buildNum}, Commit SHA ${buildSha.substr(0, 8)}`;
+      management.getSection('kibana').display = `VNPT`;
     }
   };
 });
@@ -60,6 +61,7 @@ uiModules
     link: function ($scope) {
       $scope.sections = management.items.inOrder;
       $scope.kbnVersion = kbnVersion;
+
     }
   };
 });
