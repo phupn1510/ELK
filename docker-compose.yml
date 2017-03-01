@@ -57,7 +57,7 @@ services:
     container_name: kibana
     volumes:
       - ./kibana/config/:/etc/kibana/
-      - ./kibana/kibana:/usr/share/kibana
+#      - ./kibana/kibana:/usr/share/kibana
 #      - ./kibana/commons.style.css:/usr/share/kibana/optimize/bundles/commons.style.css
 #      - ./kibana/chrome.jade:/usr/share/kibana/src/ui/views/chrome.jade
 #      - ./kibana/ui_app.jade:/usr/share/kibana/src/ui/views/ui_app.jade
