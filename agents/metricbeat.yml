@@ -82,7 +82,9 @@ metricbeat.modules:
 output.logstash:
   # The Logstash hosts
   hosts: ["127.0.0.1:5044"]
-
+  ssl.certificate_authorities: ["/etc/ca.pem"]
+  ssl.certificate: "/etc/client.crt"
+  ssl.key: "/etc/client.key"
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]

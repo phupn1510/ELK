@@ -20,12 +20,14 @@ filebeat.prospectors:
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
     - /var/log/syslog.log
+    - /var/log/messages
   document_type: syslog
 - input_type: log
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
     - /var/log/auth.log
+    - /var/log/secure
   document_type: auth-log
 - input_type: log
 
@@ -106,7 +108,9 @@ filebeat.prospectors:
 output.logstash:
   # The Logstash hosts
   hosts: ["127.0.0.1:5044"]
-
+  ssl.certificate_authorities: ["/etc/ca.pem"]
+  ssl.certificate: "/etc/client.crt"
+  ssl.key: "/etc/client.key"
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
  # ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]

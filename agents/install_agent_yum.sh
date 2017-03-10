@@ -15,10 +15,10 @@ sudo yum install libpcap
 /usr/bin/curl -L -O https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-5.2.1-x86_64.rpm
 /usr/bin/rpm -vi packetbeat-5.2.1-x86_64.rpm
 
- /bin/sed -i 's/localhost/'$IP_ELK'/g' filebeat.yml
- /bin/sed -i 's/localhost/'$IP_ELK'/g' metricbeat.yml
- /bin/sed -i 's/localhost/'$IP_ELK'/g' packetbeat.yml
- /bin/sed -i 's/localhost/'$IP_ELK'/g' heartbeat.yml
+ /bin/sed -i 's/127.0.0.1/'$IP_ELK'/g' filebeat.yml
+ /bin/sed -i 's/127.0.0.1/'$IP_ELK'/g' metricbeat.yml
+ /bin/sed -i 's/127.0.0.1/'$IP_ELK'/g' packetbeat.yml
+ /bin/sed -i 's/127.0.0.1/'$IP_ELK'/g' heartbeat.yml
  cp filebeat.yml /etc/filebeat/filebeat.yml
  cp metricbeat.yml /etc/metricbeat/metricbeat.yml
  cp packetbeat.yml /etc/packetbeat/packetbeat.yml
