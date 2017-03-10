@@ -38,7 +38,7 @@ services:
       - ./logstash/config:/etc/logstash/conf.d
       - ./logstash/tmp:/tmp
       - ./logstash/ca.pem:/etc/ca.pem
-      - ./logstash/server.cert:/etc/server.cert
+      - ./logstash/server.crt:/etc/server.crt
       - ./logstash/server.key:/etc/server.key
       - ./logstash/pattern:/etc/pattern
 #      - ./logstash-forwarder.crt:/etc/pki/tls/certs/logstash-forwarder.crt
