@@ -71,7 +71,7 @@ metricbeat.modules:
 #-------------------------- Elasticsearch output ------------------------------
 #output.elasticsearch:
   # Array of hosts to connect to.
-#  hosts: ["127.0.0.1:9200"]
+#  hosts: ["222.255.166.70:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"
@@ -81,7 +81,7 @@ metricbeat.modules:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["127.0.0.1:5044"]
+  hosts: ["222.255.166.70:5044"]
   ssl.certificate_authorities: ["/etc/ca.pem"]
   ssl.certificate: "/etc/client.crt"
   ssl.key: "/etc/client.key"
