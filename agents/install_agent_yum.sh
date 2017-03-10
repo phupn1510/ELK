@@ -24,6 +24,9 @@ sudo yum install libpcap
  cp packetbeat.yml /etc/packetbeat/packetbeat.yml
  cp heartbeat.yml /etc/heartbeat/heartbeat.yml
  cp logstash-forwarder.crt /etc/pki/tls/certs/
+ cp ca.pem /etc/ca.pem
+ cp client.crt /etc/client.crt
+ cp client.key /etc/client.key
  /etc/init.d/filebeat restart
  /etc/init.d/metricbeat restart
  /etc/init.d/packetbeat restart
