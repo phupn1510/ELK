@@ -1,0 +1,2 @@
+message_format = "[username:%{username} uid:%{uid} sid:%{sid} tty:%{tty} cwd:%{cwd} filename:%{filename}]: %{cmdline}"
+ "message", "\[%{WORD}\:%{USERNAME:username} %{DATA} %{DATA} %{DATA} %{WORD}\:%{DATA:cwd}%{DATA}\]\: %{GREEDYDATA:exe_command}"
