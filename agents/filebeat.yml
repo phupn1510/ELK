@@ -35,7 +35,7 @@ filebeat.prospectors:
   paths:
     - /var/log/nginx/access.log
     - /var/log/nginx/error.log
-  document_type: syslog  
+  document_type: weblog  
     
     #- c:\programdata\elasticsearch\logs\*
 
