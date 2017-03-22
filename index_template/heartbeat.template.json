@@ -5,7 +5,7 @@
         "norms": false
       },
       "_meta": {
-        "version": "5.2.2"
+        "version": "5.2.1"
       },
       "dynamic_templates": [
         {
@@ -21,10 +21,6 @@
       "properties": {
         "@timestamp": {
           "type": "date"
-        },
-        "activity_id": {
-          "ignore_above": 1024,
-          "type": "keyword"
         },
         "beat": {
           "properties": {
@@ -42,30 +38,44 @@
             }
           }
         },
-        "computer_name": {
+        "duration": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
+        },
+        "error": {
+          "properties": {
+            "message": {
+              "norms": false,
+              "type": "text"
+            },
+            "type": {
+              "ignore_above": 1024,
+              "type": "keyword"
+            }
+          }
+        },
+        "host": {
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "event_id": {
-          "type": "long"
+        "http_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         },
-        "keywords": {
-          "ignore_above": 1024,
-          "type": "keyword"
+        "icmp_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         },
-        "level": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "log_name": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "message": {
-          "norms": false,
-          "type": "text"
-        },
-        "message_error": {
+        "ip": {
           "ignore_above": 1024,
           "type": "keyword"
         },
@@ -101,70 +111,73 @@
             }
           }
         },
-        "opcode": {
+        "monitor": {
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "process_id": {
+        "port": {
           "type": "long"
         },
-        "provider_guid": {
+        "resolve_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
+        },
+        "response": {
+          "properties": {
+            "status": {
+              "type": "long"
+            }
+          }
+        },
+        "scheme": {
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "record_number": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "related_activity_id": {
-          "ignore_above": 1024,
-          "type": "keyword"
-        },
-        "source_name": {
-          "ignore_above": 1024,
-          "type": "keyword"
+        "socks5_connect_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         },
         "tags": {
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "task": {
-          "ignore_above": 1024,
-          "type": "keyword"
+        "tcp_connect_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         },
-        "thread_id": {
-          "type": "long"
+        "tls_handshake_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         },
         "type": {
           "ignore_above": 1024,
           "type": "keyword"
         },
-        "user": {
-          "properties": {
-            "domain": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "identifier": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "name": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            },
-            "type": {
-              "ignore_above": 1024,
-              "type": "keyword"
-            }
-          }
+        "up": {
+          "type": "boolean"
         },
-        "version": {
-          "type": "long"
-        },
-        "xml": {
+        "url": {
           "norms": false,
           "type": "text"
+        },
+        "validate_rtt": {
+          "properties": {
+            "us": {
+              "type": "long"
+            }
+          }
         }
       }
     }
@@ -172,9 +185,9 @@
   "order": 0,
   "settings": {
     "index.mapping.total_fields.limit": 10000,
-    "refresh_interval": "5s",
+      "refresh_interval": "5s",
         "number_of_replicas": 0,
         "number_of_shards": 1
   },
-  "template": "winlogbeat-*"
+  "template": "heartbeat-*"
 }

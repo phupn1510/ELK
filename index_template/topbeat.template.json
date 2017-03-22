@@ -4,7 +4,9 @@
     "template": "topbeat-*",
     "settings": {
       "index": {
-        "refresh_interval": "5s"
+          "refresh_interval": "5s",
+        "number_of_replicas": 0,
+        "number_of_shards": 1
       }
     },
     "mappings": {

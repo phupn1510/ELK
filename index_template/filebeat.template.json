@@ -3,7 +3,9 @@
     "template": "filebeat-*",
     "settings": {
       "index": {
-        "refresh_interval": "5s"
+          "refresh_interval": "5s",
+        "number_of_replicas": 0,
+        "number_of_shards": 1
       }
     },
     "mappings": {
@@ -57,6 +59,20 @@
               }
             }
           },
+                "geoip-ipdst": {
+      "properties": {
+        "location": {
+          "type": "geo_point"
+        }
+      }
+    },
+    "geoip-ipsrc": {
+      "properties": {
+        "location": {
+          "type": "geo_point"
+        }
+      }
+    },
           "input_type": {
             "ignore_above": 1024,
             "type": "keyword"
