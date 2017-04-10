@@ -24,7 +24,7 @@ elasticsearch.url: "http://elasticsearch:9200"
 # setting. When the value of this setting is false, Kibana uses the hostname of the host
 # that connects to this Kibana instance.
 #elasticsearch.preserveHost: true
-
+elasticsearch.requestTimeout: 5000000
 # Kibana uses an index in Elasticsearch to store saved searches, visualizations and
 # dashboards. Kibana creates a new index if the index doesn’t already exist.
 #kibana.index: ".kibana"

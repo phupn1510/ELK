@@ -73,6 +73,20 @@
         }
       }
     },
+               "geoip-coldst": {
+      "properties": {
+        "location": {
+          "type": "geo_point"
+        }
+      }
+    },
+    "geoip-colsrc": {
+      "properties": {
+        "location": {
+          "type": "geo_point"
+        }
+      }
+    },
           "input_type": {
             "ignore_above": 1024,
             "type": "keyword"
